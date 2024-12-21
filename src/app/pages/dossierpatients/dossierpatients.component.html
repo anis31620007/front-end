@@ -1,0 +1,327 @@
+<div class="flex min-h-screen bg-gray-100">
+  <!-- Sidebar -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+  />
+  <div class="flex flex-col w-56 bg-white rounded-r-3xl overflow-hidden">
+    <div class="flex items-center justify-center h-20 border-b">
+      <h1 class="text-2xl font-bold text-indigo-500">Logoipsum</h1>
+    </div>
+    <ul class="flex flex-col py-4">
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+          >
+            <i class="bx bx-home text-xl text-gray-500"></i>
+          </span>
+          <span class="text-sm font-medium">Dashboard</span>
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            ><i class="bx bx-bell"></i
+          ></span>
+          <span class="text-sm font-medium">Notifications</span>
+          <span
+            class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-red-500"
+            >5</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            ><i class="bx bx-user"></i
+          ></span>
+          <span class="text-sm font-medium">settings</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            ><i class="bx bx-log-out"></i
+          ></span>
+          <span class="text-sm font-medium">Logout</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex-1 p-8">
+    <header class="flex justify-between items-center">
+      <h1 class="text-3xl font-semibold">Dossier Patient</h1>
+      <button
+        class="group/button relative inline-flex items-center justify-center overflow-hidden rounded-md bg-blue-500 backdrop-blur-lg px-6 py-2 text-base font-semibold text-white transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-xl hover:shadow-blue-500 border border-white/20"
+      >
+        <span class="text-lg">generer code qr</span>
+        <div
+          class="absolute inset-0 flex h-full w-full justify-center [transform:skew(-13deg)_translateX(-100%)] group-hover/button:duration-1000 group-hover/button:[transform:skew(-13deg)_translateX(100%)]"
+        >
+          <div class="relative h-full w-10 bg-white/30"></div>
+        </div>
+      </button>
+    </header>
+
+    <!-- Content Grid -->
+    <div class="grid grid-cols-4 gap-6 mt-8">
+      <!-- Patient Information -->
+      <section class="col-span-1 bg-white rounded-lg shadow p-6">
+        <div class="flex flex-col items-center text-center">
+          <img
+            src="../../../assets/images/Image 2.png"
+            alt="Patient photo"
+            class="w-24 h-24 rounded-full mb-4"
+          />
+          <h2 class="font-semibold text-lg">Nom Prénom</h2>
+          <p class="text-sm text-gray-500">Age: XX</p>
+        </div>
+        <ul class="mt-6 text-sm text-gray-700 space-y-4">
+          <li><strong>Num de sécurité sociale:</strong> XXXXXXXX</li>
+          <li><strong>Date de naissance:</strong> 10/06/2002</li>
+          <li><strong>Numéro de téléphone:</strong> 21 21 12 13 12</li>
+          <li><strong>Email:</strong> li_sraichesi.dz</li>
+          <li><strong>Adresse:</strong> 192 rue de je ne sais quoi Alger</li>
+          <li><strong>Personne à contacter:</strong> Sraich imene</li>
+          <li><strong>Mutuelle:</strong> info sur la compagnie</li>
+        </ul>
+      </section>
+
+      <!-- Les Antécédents -->
+      <section class="col-span-1 bg-white rounded-lg shadow p-6">
+        <h2 class="font-bold text-lg mb-4">Les antécédents</h2>
+        <ul class="space-y-4 text-sm text-gray-700">
+          <li class="flex items-center space-x-4">
+            <div
+              class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center"
+            >
+              <img src="../../../assets/images/maladie.png" />
+            </div>
+            <div><strong>Maladies chroniques:</strong> Description...</div>
+          </li>
+          <li class="flex items-center space-x-4">
+            <div
+              class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center"
+            >
+              <i class="bx bx-droplet text-xl text-red-500"></i>
+            </div>
+            <div>
+              <strong>Urgences liées au diabète:</strong> Description...
+            </div>
+          </li>
+          <li class="flex items-center space-x-4">
+            <div
+              class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center"
+            >
+              <img src="../../../assets/images/chir.png" />
+            </div>
+            <div><strong>Chirurgie:</strong> Description...</div>
+          </li>
+          <li class="flex items-center space-x-4">
+            <div
+              class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center"
+            >
+              <i class="bx bx-group text-xl text-yellow-500"></i>
+            </div>
+            <div><strong>Maladies familiales:</strong> Description...</div>
+          </li>
+          <li class="flex items-center space-x-4">
+            <div
+              class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center"
+            >
+              <i class="bx bx-band-aid text-xl text-purple-500"></i>
+            </div>
+            <div><strong>Complications associées:</strong> Description...</div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Bilan -->
+      <section class="col-span-1 bg-white rounded-lg shadow p-6">
+        <h2 class="font-bold text-lg mb-4">Bilan</h2>
+        <ul class="space-y-4 text-sm text-gray-700">
+          <li
+            class="flex justify-between items-center bg-gray-100 p-3 rounded-lg"
+          >
+            <div class="flex items-center space-x-3">
+              <div
+                class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+              >
+                <i class="bx bx-file text-blue-500 text-lg"></i>
+              </div>
+              <div>
+                <span class="font-medium">Bilan Radiologie</span>
+                <br />
+                <span class="text-gray-500 text-xs">01/10/2024</span>
+              </div>
+            </div>
+            <div class="flex space-x-2">
+              <button class="text-blue-500 hover:text-blue-700">
+                <i class="bx bx-edit text-lg"></i>
+              </button>
+              <button class="text-red-500 hover:text-red-700">
+                <i class="bx bx-trash text-lg"></i>
+              </button>
+            </div>
+          </li>
+          <li
+            class="flex justify-between items-center bg-gray-100 p-3 rounded-lg"
+          >
+            <div class="flex items-center space-x-3">
+              <div
+                class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center"
+              >
+                <i class="bx bx-file text-blue-500 text-lg"></i>
+              </div>
+              <div>
+                <span class="font-medium">Bilan Laboratin</span>
+                <br />
+                <span class="text-gray-500 text-xs">24/10/2024</span>
+              </div>
+            </div>
+            <div class="flex space-x-2">
+              <button class="text-blue-500 hover:text-blue-700">
+                <i class="bx bx-edit text-lg"></i>
+              </button>
+              <button class="text-red-500 hover:text-red-700">
+                <i class="bx bx-trash text-lg"></i>
+              </button>
+            </div>
+          </li>
+        </ul>
+        <button
+          class="mt-4 w-full px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600"
+        >
+          Demander
+        </button>
+      </section>
+
+      <!-- Ordonnance -->
+      <section class="col-span-1 bg-white rounded-lg shadow p-6">
+        <h2 class="font-bold text-lg mb-4">Ordonnance</h2>
+        <ul class="space-y-4 text-sm">
+          <!-- Ordonnance 1 -->
+          <li
+            class="flex items-center justify-between bg-gray-100 p-4 rounded-lg"
+          >
+            <div class="flex items-center">
+              <i class="bx bxs-file-pdf text-red-500 text-xl mr-4"></i>
+              <div>
+                <p class="font-medium text-gray-700">Ord1.pdf</p>
+                <p class="text-xs text-gray-500">01/10/2024</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-2">
+              <button
+                class="p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition"
+                aria-label="Edit"
+              >
+                <i class="bx bx-edit text-gray-600"></i>
+              </button>
+              <button
+                class="p-2 bg-gray-200 rounded-full hover:bg-red-500 transition"
+                aria-label="Delete"
+              >
+                <i class="bx bx-trash text-gray-600 hover:text-white"></i>
+              </button>
+            </div>
+          </li>
+
+          <!-- Ordonnance 2 -->
+          <li
+            class="flex items-center justify-between bg-gray-100 p-4 rounded-lg"
+          >
+            <div class="flex items-center">
+              <i class="bx bxs-file-pdf text-red-500 text-xl mr-4"></i>
+              <div>
+                <p class="font-medium text-gray-700">Ord2.pdf</p>
+                <p class="text-xs text-gray-500">24/10/2024</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-2">
+              <button
+                class="p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition"
+                aria-label="Edit"
+              >
+                <i class="bx bx-edit text-gray-600"></i>
+              </button>
+              <button
+                class="p-2 bg-gray-200 rounded-full hover:bg-red-500 transition"
+                aria-label="Delete"
+              >
+                <i class="bx bx-trash text-gray-600 hover:text-white"></i>
+              </button>
+            </div>
+          </li>
+        </ul>
+
+        <button
+          class="rounded-lg relative w-36 h-10 cursor-pointer flex items-center ml-12 mt-5 border border-blue-500 bg-blue-500 group hover:bg-blue-500 active:bg-blue-500 active:border-blue-500"
+        >
+          <span
+            class="text-white font-semibold ml-8 transform group-hover:translate-x-20 transition-all duration-300"
+          >
+            ajouter</span
+          >
+          <span
+            class="absolute right-0 h-full w-10 rounded-lg bg-blue-500 flex items-center justify-center transform group-hover:translate-x-0 group-hover:w-full transition-all duration-300"
+          >
+            <svg
+              class="svg w-8 text-white"
+              fill="none"
+              height="24"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <line x1="12" x2="12" y1="5" y2="19"></line>
+              <line x1="5" x2="19" y1="12" y2="12"></line>
+            </svg>
+          </span>
+        </button>
+      </section>
+    </div>
+
+    <!-- Liste des consultations -->
+    <section class="bg-white rounded-lg shadow p-6 mt-8">
+      <h2 class="font-bold text-lg mb-4">Liste de consultations</h2>
+      <ul class="space-y-4 text-sm text-gray-700">
+        <li class="flex justify-between bg-gray-100 p-4 rounded-lg">
+          <span>Consultation1</span>
+          <span>24/10/2024</span>
+        </li>
+        <li class="flex justify-between bg-gray-100 p-4 rounded-lg">
+          <span>Consultation2</span>
+          <span>24/10/2024</span>
+        </li>
+        <li class="flex justify-between bg-gray-100 p-4 rounded-lg">
+          <span>Consultation3</span>
+          <span>24/10/2024</span>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>
