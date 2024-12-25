@@ -1,0 +1,44 @@
+<!-- Page principale -->
+<div class="flex items-center justify-center h-screen bg-gray-100">
+    <button
+      (click)="generateQRCode()"
+      class="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 transition"
+    >
+      Générer Code QR
+    </button>
+  </div>
+  
+  <!-- Pop-up -->
+  <div
+    *ngIf="isPopupVisible"
+    class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center"
+  >
+    <div class="bg-white p-8 rounded-lg shadow-lg relative w-3/4 max-w-lg">
+      <!-- Bouton de fermeture -->
+      <button
+        (click)="closePopup()"
+        class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-2xl"
+      >
+        ✖
+      </button>
+  
+      <!-- Titre -->
+      <h2 class="text-xl font-bold mb-6 text-center">Code QR Généré</h2>
+  
+      <!-- QR Code ou message d'erreur -->
+      <div class="flex justify-center items-center">
+        <img
+          *ngIf="qrCodeDataUrl; else noQrCodeGenerated"
+          [src]="qrCodeDataUrl"
+          alt="QR Code"
+          class="max-w-full max-h-64"
+        />
+      </div>
+  
+      <!-- Message d'absence de QR Code -->
+      <ng-template #noQrCodeGenerated>
+        <p class="text-red-500 text-center">Aucun QR Code généré.</p>
+      </ng-template>
+    </div>
+  </div>
+  

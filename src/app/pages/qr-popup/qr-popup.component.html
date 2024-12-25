@@ -1,0 +1,17 @@
+<div
+  class="fixed inset-0 flex items-center justify-center bg-black/50 z-50"
+  *ngIf="qrCodeData"
+>
+  <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+    <h2 class="text-xl font-semibold mb-4 text-center">Code QR Généré</h2>
+    <div class="flex justify-center items-center mb-6">
+     
+    </div>
+    <button
+      (click)="close()"
+      class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+    >
+      Fermer
+    </button>
+  </div>
+</div>
