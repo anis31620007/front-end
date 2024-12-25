@@ -1,0 +1,194 @@
+<div class="flex flex-row">
+  <!-- Sidebar -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+  />
+  <div class="flex flex-col w-56 bg-white rounded-r-3xl overflow-hidden ">
+    <div class="flex items-center justify-center h-20 border-b">
+      <h1 class="text-2xl font-bold text-indigo-500">Logoipsum</h1>
+    </div>
+    <ul class="flex flex-col py-4">
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+          >
+            <i class="bx bx-home text-xl text-gray-500"></i>
+          </span>
+          <span class="text-sm font-medium">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            ><i class="bx bx-bell"></i></span
+          >
+          <span class="text-sm font-medium">Notifications</span>
+          <span
+            class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-red-500"
+            >5</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            ><i class="bx bx-user"></i></span
+          >
+          <span class="text-sm font-medium">Settings</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            ><i class="bx bx-log-out"></i></span
+          >
+          <span class="text-sm font-medium">Logout</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+   <h1 class="text-3xl font-bold mb-4">Dossier</h1>
+<div class="container flex gap-5 p-5">
+  <!-- Info Card (Left Section) -->
+  <div class="info-card flex flex-col w-3/10 bg-white rounded-lg p-5 relative">
+    <div class="centered-header text-center mb-5">
+      <!-- Adjust image container to center it and limit its size -->
+      <div class="user-image-container w-20 h-20 mx-auto mb-4">
+        <img src="../../assets/icons/teenyicons--user-square-outline.png" alt="" class="w-full h-full object-cover">
+      </div>
+      <h3 class="text-lg font-bold">{{patient.name}}</h3>
+      <p class="text-sm text-gray-600">Age: {{patient.age}}</p>
+    </div>
+
+  
+    <div class="info-list space-y-4">
+      <p class="text-gray-800 text-[12px]">Information</p>
+      <div class="flex items-center space-x-4 text-[12px]">
+        <img src="../../assets/icons/material-symbols-light--id-card-outline.png" alt="" class="w-8 h-8 opacity-85">
+        <p>Num de sécurité sociale: <br> <strong class="text-black">{{ patient.NSS }}</strong></p>
+      </div>
+      <div class="flex items-center space-x-4 text-[12px]">
+        <img src="../../assets/icons/clarity--date-line.png" alt="" class="w-6 h-6 opacity-85">
+        <p>Date de naissance: <br> <strong class="text-black">{{patient.dateNaissance}}</strong></p>
+      </div>
+      <div class="flex items-center space-x-4 text-[12px]">
+        <img src="../../assets/icons/mdi-light--phone.png" alt="" class="w-6 h-6">
+        <p>Numéro de téléphone: <br><strong class="text-black">{{ patient.NumTel }}</strong></p>
+      </div>
+      <div class="flex items-center space-x-4 text-[12px]">
+        <img src="../../assets/icons/si--mail-line.png" alt="" class="w-6 h-6">
+        <p>Email: <br> <strong class="text-black">{{ patient.Email }}</strong></p>
+      </div>
+      <div class="flex items-center space-x-4 opacity-85 text-[12px]">
+        <img src="../../assets/icons/hugeicons--contact-02.png" alt="" class="w-6 h-6">
+        <p>Personne à contacter: <br> <strong class="text-black">{{ patient.Contact.Nom }} <br>{{ patient.Contact.Tel }}</strong></p>
+      </div>
+      <div class="flex items-center space-x-4 opacity-85 text-[12px]">
+        <img src="../../assets/icons/streamline--insurance-hand.png" alt="" class="w-6 h-6">
+        <p>Mutuelle: <br><strong class="text-black">{{ patient.Mutuelle }}</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Section -->
+  <div class="right-section flex flex-col w-4/5 gap-5">
+ <!-- Medical History -->
+<div class="medical-history bg-white rounded-lg p-5 flex flex-col gap-5">
+  <div class="flex justify-between items-center mb-3">
+    <h2 class="text-[22px] font-bold">Les antécédents</h2>
+    <div class="flex space-x-2">
+      <select [(ngModel)]="selectedType" class="border border-gray-300 rounded-[10px] p-2 pr-4 text-sm">
+        <option value="" disabled selected>Choisir type</option>
+        <option *ngFor="let type of types" [value]="type.value">{{ type.label }}</option>
+      </select>
+      <button (click)="addMedicalItem()" class="bg-[#78B2CA] text-white px-4 py-2 rounded-lg hover:bg-[#5592B0] h-[35px] w-[90px] text-xs">
+        Ajouter
+      </button>
+    </div>
+  </div>
+
+  <!-- Display medical history items -->
+  <ul class="flex flex-wrap text-lg mb-3 gap-5">
+    <li *ngFor="let item of medicalHistory; let i = index" class="flex items-start gap-4">
+      <img [src]="item.icon" alt="icon" class="bg-[#b2dded] rounded-[10px] p-[8px] h-[2em] w-auto object-contain self-start">
+      <div class="flex flex-col justify-start text-sm w-full">
+        <div class="flex items-center justify-between">
+          <strong class="text-black">{{ item.label }}</strong>
+          <button (click)="deleteMedicalItem(i)" class="border-none cursor-pointer ml-2">
+            <img src="../../assets/icons/material-symbols--delete-outline.png" alt="delete" class="h-[16px]">
+          </button>
+        </div>
+        <!-- Textarea with auto-resizing and no scrollbar -->
+        <textarea 
+          [(ngModel)]="item.details" 
+          rows="1" 
+          placeholder="Write details here..." 
+          (input)="resizeTextarea($event)" 
+          (focus)="onFocus($event)" 
+          (blur)="onBlur($event)"
+          class="w-full border border-gray-300 rounded-md p-2 mt-0.5 resize-none focus:outline-none overflow-hidden"></textarea>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+
+  
+
+  
+<!-- Consultation Section -->
+<div class="consultation-list bg-white rounded-lg p-5 flex flex-col flex-1">  <h2 class="text-[22px] font-bold mb-3">Liste de consultations</h2>
+  <ul id="consultation-list" class="list-none p-0 mb-auto">
+    <li *ngFor="let consultation of consultations; let i = index" class="flex items-center mb-2 p-2 bg-gray-100 rounded-lg">
+      <img src="../../assets/icons/raphael--page.png" alt="" class="h-[1.5em] mr-2.5">
+      <div>
+        <input 
+          *ngIf="consultation.editing" 
+          [(ngModel)]="consultation.name" 
+          type="text" 
+          placeholder="Enter consultation name"
+          (keydown.enter)="saveConsultation(i)"
+          class="bg-none border border-black rounded px-2 py-1"
+        />
+        <strong *ngIf="!consultation.editing" class="text-sm">{{ consultation.name }}</strong>
+        <p class="text-xs text-black">{{ consultation.date }}</p>
+      </div>
+      <div class="ml-auto mr-5 self-center flex space-x-2">
+        <button (click)="editConsultation(i)" class="border-none cursor-pointer">
+          <img src="../../assets/icons/lucide--edit.png" alt="edit" class="h-[16px]">
+        </button>
+        <button (click)="deleteConsultation(i)" class="border-none cursor-pointer">
+          <img src="../../assets/icons/material-symbols--delete-outline.png" alt="delete" class="h-[18px]">
+        </button>
+      </div>
+    </li>
+  </ul>
+  <div class="flex justify-end mt-auto">
+    <button (click)="addConsultation()" class="ajouterButton bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs" [disabled]="!isNameValid">
+      Ajouter
+    </button>
+  </div>
+</div>
+
+</div>
+</div>

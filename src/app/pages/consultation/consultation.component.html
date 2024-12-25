@@ -1,0 +1,336 @@
+<div class="flex flex-row">
+    <!-- Sidebar -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+    />
+    <div class="flex flex-col w-56 bg-white rounded-r-3xl overflow-hidden ">
+      <div class="flex items-center justify-center h-20 border-b">
+        <h1 class="text-2xl font-bold text-indigo-500">Logoipsum</h1>
+      </div>
+      <ul class="flex flex-col py-4">
+        <li>
+          <a
+            href="#"
+            class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+          >
+            <span
+              class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            >
+              <i class="bx bx-home text-xl text-gray-500"></i>
+            </span>
+            <span class="text-sm font-medium">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+          >
+            <span
+              class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+              ><i class="bx bx-bell"></i></span
+            >
+            <span class="text-sm font-medium">Notifications</span>
+            <span
+              class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-red-500"
+              >5</span
+            >
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+          >
+            <span
+              class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+              ><i class="bx bx-user"></i></span
+            >
+            <span class="text-sm font-medium">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+          >
+            <span
+              class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+              ><i class="bx bx-log-out"></i></span
+            >
+            <span class="text-sm font-medium">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="flex-1 p-5 bg-[#EAEDF4]">
+      <div class="flex  gap-5">
+        <!-- flex-wrap -->
+        <!-- Left Section: Info Patient -->
+        <div class="info-card flex flex-col w-3/12 bg-white rounded-lg p-5 ">
+          <div class="text-center mb-5">
+            <div class="w-20 h-20 mx-auto mb-4">
+              <img src="../../assets/icons/teenyicons--user-square-outline.png" alt="" class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-lg font-bold">{{patient.name}}</h3>
+            <p class="text-sm text-gray-600">Age: {{patient.age}}</p>
+          </div>
+          <div class="space-y-4 ">
+            <p class="text-gray-800 text-sm">Information</p>
+            <div class="flex items-center space-x-4 text-sm">
+              <img src="../../assets/icons/material-symbols-light--id-card-outline.png" alt="" class="w-8 h-8">
+              <p>Num de sécurité sociale: <br> <strong>{{ patient.NSS }}</strong></p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img src="../../assets/icons/clarity--date-line.png" alt="" class="w-6 h-6">
+              <p>Date de naissance: <br> <strong>{{patient.dateNaissance}}</strong></p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img src="../../assets/icons/mdi-light--phone.png" alt="" class="w-6 h-6">
+              <p>Numéro de téléphone: <br><strong>{{ patient.NumTel }}</strong></p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img src="../../assets/icons/si--mail-line.png" alt="" class="w-6 h-6">
+              <p>Email: <br> <strong>{{ patient.Email }}</strong></p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img src="../../assets/icons/hugeicons--contact-02.png" alt="" class="w-6 h-6">
+              <p>Personne à contacter: <br> <strong>{{ patient.Contact.Nom }} <br>{{ patient.Contact.Tel }}</strong></p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img src="../../assets/icons/streamline--insurance-hand.png" alt="" class="w-6 h-6">
+              <p>Mutuelle: <br><strong>{{ patient.Mutuelle }}</strong></p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Right Section: Consultation & Bilan -->
+        <div class="flex flex-col w-9/12 gap-5 ">
+          <!-- Top Row: Consultation & Bilan -->
+          <div class="flex gap-5">
+            <!-- Left Section -->
+            <div class="right-section">
+              <!-- Medical History Section -->
+              <div class="medical-history bg-white rounded-lg p-5 flex-grow ">
+                <h2 class="text-2xl font-bold mb-2">Antécédents</h2>
+                <ul class="flex flex-col gap-2 text-[12px]">
+                  <li class="flex p-2">
+                    <img src="../../assets/icons/heartbeat.png" alt=""
+                      class="bg-blue-200 rounded-lg w-auto h-8 mr-4 p-2">
+                    <div class="text-sm flex flex-col">
+                      <strong class="text-black">Maladies chroniques</strong>
+                      <span class="text-[10px]">some texte here</span>
+                    </div>
+                  </li>
+                  <li class="flex p-2">
+                    <img src="../../assets/icons/family.png" alt=""
+                      class="bg-blue-200 rounded-lg w-auto h-8 mr-4 p-2">
+                    <div class="text-sm flex flex-col ">
+                      <strong class="text-black">Maladies familiales</strong>
+                      <span class="text-[10px]">some texte here</span>
+                    </div>
+                  </li>
+                  <li class="flex p-2">
+                    <img src="../../assets/icons/syringe.png" alt=""
+                      class="bg-blue-200 rounded-lg w-auto h-8 mr-4 p-2">
+                    <div class="text-sm flex flex-col">
+                      <strong class="text-black">Chirurgies</strong>
+                      <span class="text-[10px]">some texte here</span>
+                    </div>
+                  </li>
+                  <li class="flex p-2">
+                    <img src="../../assets/icons/heartbeat.png" alt=""
+                      class="bg-blue-200 rounded-lg w-auto h-8 mr-4 p-2">
+                    <div class="text-sm flex flex-col">
+                      <strong class="text-black">Complications associées</strong>
+                      <span class="text-[10px]">some texte here</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--bilan List -->
+            <div class="bg-white rounded-lg p-5 flex-1">
+              <h2 class="text-xl font-bold mb-3">Bilan</h2>
+              <ul class="list-none p-0 mb-auto text-[12px]">
+                <li *ngFor="let bilan of Bilan; let i = index" class="flex items-center mb-2 p-2 bg-gray-100 rounded-lg">
+                  <img src="../../assets/icons/raphael--page.png" alt="" class="h-6 mr-2">
+                  <div>
+                    <input *ngIf="bilan.editing" 
+                    [(ngModel)]="bilan.name" 
+                    type="text" placeholder="Enter nom" 
+                    (keydown.enter)="saveBilan(i)" 
+                    (blur)="saveBilan(i)" 
+                    class="border-[0.5px] text-[12px] rounded px-2 py-1">
+                    <span *ngIf="!bilan.editing" class="text-[12px] font-medium">{{ bilan.name }}</span>
+                    <p class="text-[10px] font-normal">{{ bilan.date }}</p>
+                  </div>
+                  <div class="ml-auto flex space-x-2">
+                    <button (click)="editBilan(i)"><img src="../../assets/icons/lucide--edit.png" alt="edit" class="h-4"></button>
+                    <button (click)="deleteBilan(i)"><img src="../../assets/icons/material-symbols--delete-outline.png" alt="delete" class="h-4"></button>
+                  </div>
+                </li>
+              </ul>
+              <div class="flex justify-end mt-auto">
+                <button (click)="addBilan()" class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs"
+                [disabled]="!isNameValid" >Ajouter</button>
+              </div>
+            </div>
+
+            <!-- Popup1 -->
+            <div *ngIf="showPopupBilan1" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                <div class="bg-white p-7 rounded-lg shadow-lg h-[250px] w-[300px]">
+                  
+                    <!-- Main Category Selection -->
+                    <div class="flex flex-col gap-4">
+                      <label for="category">Type du bilan:</label>
+                      <select id="category" [(ngModel)]="selectedTestCategory" (change)="onCategoryChange()" class="border p-2 rounded">
+                        <option value="" disabled selected>Choisir le type du bilan</option>
+                        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+                      </select>
+                      <button
+                        class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg text-xs"
+                        (click)="openPopup()"
+                        [disabled]="!showPopupBilan1"
+                        >Next
+                      </button>
+                      <button (click)="closePopupBilan()" class="bg-[#FBD0B1] text-[#C82D2B] py-2 px-4 rounded-lg text-xs">Annuler</button>
+
+                </div>
+
+            </div> 
+        </div>   
+
+<!-- Popup -->
+<div *ngIf="showPopupBilan" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+    <div class="bg-white p-7 rounded-lg shadow-lg w-[700px] h-[500px] flex flex-col">
+        <!-- Subcategory Dropdown and Add Button -->
+        <div class="flex flex-col gap-4">
+          <label for="subcategory">Sous-categorie</label>
+          <select 
+            id="subcategory" 
+            [(ngModel)]="selectedSubCategory"  
+            class="border p-2 rounded" 
+            [disabled]="!selectedTestCategory">
+            <option value=""  disabled selected>Choisir la sous-categorie</option>
+            <option *ngFor="let subcategory of subcategories" [value]="subcategory">{{ subcategory }}</option>
+          </select>
+          <button 
+            (click)="addSubCategory()" 
+            class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg text-xs"
+            [disabled]="!selectedSubCategory">Add Subcategory</button>
+        </div>
+<div class="overflow-y-auto flex-1 mb-4 max-h-[300px]">
+    <!-- Display Selected Subcategories and Tests -->
+    <div *ngIf="selectedSubCategories.length > 0">
+      <div *ngFor="let subcategory of selectedSubCategories">
+        <div class="font-bold">{{ subcategory }}</div>
+        <!-- Display Tests for Each Subcategory -->
+        <div *ngIf="selectedTests[subcategory]">
+          <label class="font-medium">Select Tests:</label>
+          <div *ngFor="let test of getObjectKeys(selectedTests[subcategory])" class="flex items-center mt-2">
+            <input 
+              type="checkbox" 
+              [(ngModel)]="selectedTests[subcategory][test]" 
+              (change)="onTestChange(subcategory, test, $event)" />
+            <span class="ml-2">{{ test }}</span>
+          </div>
+        </div>
+      </div>
+    </div>   
+  </div>
+  
+      <!-- Action Buttons -->
+      <div class="flex justify-end ">
+        <button (click)="closePopupBilan()" class="bg-[#FBD0B1] text-[#C82D2B] py-2 px-4 rounded-lg text-xs mr-4">Annuler</button>
+        <button (click)="saveBilanPopup()" class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg text-xs">Sauvegarder</button>
+      </div>
+    </div>
+  </div>
+  
+
+  
+  
+  
+              
+            <!-- Ordonnances List -->
+            <div class="bg-white rounded-lg p-5 flex-1">
+              <h2 class="text-xl font-bold mb-3">Ordonnances</h2>
+              <ul id="bilan-list" class="list-none p-0 mb-auto">
+                <li *ngFor="let ordonnance of Ordonnance; let i = index" class="flex items-center mb-2 p-2 bg-gray-100 rounded-lg">
+                  <img src="../../assets/icons/raphael--page.png" alt="" class="h-6 mr-2">
+                  <div>
+                    <input *ngIf="ordonnance.editing" 
+                    [(ngModel)]="ordonnance.name" 
+                    type="text" 
+                    placeholder="Nouveau"
+                    (keydown.enter)="saveOrdonnance(i)"
+                    (blur)="saveOrdonnance(i)" 
+                    class="border-[0.5px] text-[12px] rounded px-2 py-1  max-w-[300px]">
+                    <span *ngIf="!ordonnance.editing"  class="text-[12px] font-medium">{{ ordonnance.name }}</span>
+                    <p class="text-[10px] font-normal ">{{ ordonnance.date }}</p>
+                  </div>
+                  <div class="ml-auto flex space-x-2">
+                    <button (click)="editOrdonnance(i)"><img src="../../assets/icons/lucide--edit.png" alt="edit" class="h-4"></button>
+                    <button (click)="deleteOrdonnance(i)"><img src="../../assets/icons/material-symbols--delete-outline.png" alt="delete" class="h-4"></button>
+                  </div>
+                </li>
+              </ul>
+              <div class="flex justify-end mt-auto">
+                <button (click)="addOrdonnance()" 
+                class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs"
+                [disabled]="!isNameValid" >Ajouter</button>
+              </div>
+            </div>
+
+            <!-- Pop-up Modal -->
+            <div *ngIf="showPopup" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                <div class="bg-white p-7 rounded-lg shadow-lg w-[700px] h-[500px] flex flex-col">
+                  <div class="flex justify-between">
+                    <div class="flex flex-col text-[15px]">
+                      <span class="font-bold text-[16px]">Dr somthing</span>
+                      <span class="font-medium">Adress</span>
+                      <div class="flex items-center text-sm font-medium">
+                        <img src="../../assets/icons/mdi-light--phone.png" alt="" class="w-4 h-4 mr-2">
+                        <span>Num de tel</span>
+                      </div>
+                    </div>
+                    <div class="flex flex-col text-[15px]">
+                      <span class="font-medium">{{todayDate}}</span>
+                      <span class="font-medium">{{patient.name}}</span>
+                      <span class="font-medium">Age:{{patient.age}}</span>
+                    </div>
+                  </div>
+                  <h1 class="flex items-center justify-center text-[26px] font-bold">Ordonnance</h1>
+              
+                  <!-- Textarea takes the remaining space -->
+                  <textarea placeholder="Write details here..." class="w-full flex-grow border border-gray-300 rounded-md p-2 resize-none focus:outline-none"></textarea>
+              
+                  <div class="flex flex-row justify-end gap-2 mt-3">
+                    <button (click)="closePopup()" class="bg-[#FBD0B1] text-[#C82D2B] py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs flex items-center justify-center">Anuller</button>
+                    <button class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs flex items-center justify-center">Sauvegarder</button>
+                  </div>
+                </div>
+              </div>
+              
+        </div>
+  
+          <!-- Bottom Row: Resume -->
+          <div class="bg-white rounded-lg p-5 flex-1 flex flex-col">
+            <h2 class="text-xl font-bold mb-3">Résumé</h2>
+            <textarea placeholder="Write details here..." class="w-full h-40 border border-gray-300 rounded-md p-2 resize-none focus:outline-none"></textarea>
+            <div class="flex justify-end mt-3">
+              <button class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs flex items-center justify-center">
+                Sauvegarder
+              </button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
