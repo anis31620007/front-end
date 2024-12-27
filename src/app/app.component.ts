@@ -1,24 +1,29 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import QRCode from 'qrcode';
-import { QrPopupComponent } from './pages/qr-popup/qr-popup.component';
-import {GenerateQRCodeComponent} from './pages/generate-qrcode/generate-qrcode.component'
+import { RadiologyPopupComponent } from './pages/radiology-popup/radiology-popup.component'; // Import correct
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule,GenerateQRCodeComponent], // Importation de FormsModule ici
+  imports: [RouterOutlet, FormsModule, RadiologyPopupComponent], // Ajoutez RadiologyPopupComponent ici
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = "projet-igl";
+  title = 'projet-igl';
+  isPopupVisible: boolean = false;
+
+  showPopup() {
+    console.log('Popup button clicked!');
+    this.isPopupVisible = true;
+  }
+
   //qrValue: string = '';
 
- // @ViewChild('qrPopup') qrPopup!: QrPopupComponent;
+  // @ViewChild('qrPopup') qrPopup!: QrPopupComponent;
 
-  
-/*
+  /*
   async generateQRCode() {
     const canvas = document.getElementById('qrcodeCanvas') as HTMLCanvasElement;
 

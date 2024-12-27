@@ -4,10 +4,11 @@ import { QrPopupComponent } from '../qr-popup/qr-popup.component';
 import { CommonModule } from '@angular/common';
 import QRCode from 'qrcode';
 import { ChangeDetectorRef } from '@angular/core';
+import { RadiologyPopupComponent } from '../radiology-popup/radiology-popup.component';
 
 @Component({
   selector: 'app-dossierpatients',
-  imports: [CommonModule], // Ajoutez cette ligne pour résoudre le problème de *ngIf
+  imports: [CommonModule,RadiologyPopupComponent], // Ajoutez cette ligne pour résoudre le problème de *ngIf
   templateUrl: './dossierpatients.component.html',
   styleUrl: './dossierpatients.component.css',
 })
@@ -49,5 +50,11 @@ export class DossierpatientsComponent {
     console.log('Popup fermé');
     this.isPopupVisible = false;
     this.cdr.detectChanges(); // Force Angular à détecter les changements
+  }
+  issPopupVisible: boolean = false;
+
+  showPopup() {
+    console.log('Popup button clicked!');
+    this.issPopupVisible = true;
   }
 }

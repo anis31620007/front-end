@@ -203,13 +203,16 @@
               >
                 <i class="bx bx-file text-blue-500 text-lg"></i>
               </div>
-              <div>
-                <span class="font-medium">Bilan Radiologie</span>
-                <br />
-                <span class="text-gray-500 text-xs">01/10/2024</span>
-              </div>
+              <button (click)="showPopup()">
+                <div>
+                  <span class="font-medium">Bilan Radiologie</span>
+                  <br />
+                  <span class="text-gray-500 text-xs">01/10/2024</span>
+                </div>
+              </button>
+              <app-radiology-popup [isVisible]="issPopupVisible"></app-radiology-popup>
+
             </div>
-           
           </li>
           <li
             class="flex justify-between items-center bg-gray-100 p-3 rounded-lg"
@@ -226,10 +229,8 @@
                 <span class="text-gray-500 text-xs">24/10/2024</span>
               </div>
             </div>
-           
           </li>
         </ul>
-        
       </section>
 
       <!-- Ordonnance -->
@@ -247,7 +248,6 @@
                 <p class="text-xs text-gray-500">01/10/2024</p>
               </div>
             </div>
-            
           </li>
 
           <!-- Ordonnance 2 -->
@@ -261,11 +261,8 @@
                 <p class="text-xs text-gray-500">24/10/2024</p>
               </div>
             </div>
-           
           </li>
         </ul>
-
-        
       </section>
     </div>
 
