@@ -2,7 +2,7 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, computed, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { userInterface } from './info-patient-interface';
+import { userInterface } from '../info-patient-interface';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { InfoPatientServices } from './info-patient_services';
@@ -17,17 +17,17 @@ import { InfoPatientServices } from './info-patient_services';
   styleUrl: './info-patient.component.css'
 })
 export class InfoPatientComponent {
-  isSidebarCollapsed=input.required<boolean>();
-  screenWidth=input.required<number>();
-  sizeClass = computed(() => {
-    const isLeftSidebarCollapsed = this.isSidebarCollapsed();
-    if (isLeftSidebarCollapsed) {
-      return '';
-    }
-    return this.screenWidth() > 768 ? 'body-trimmed' : 'body-md-screen';
-  });
+  // isSidebarCollapsed=input.required<boolean>();
+  // screenWidth=input.required<number>();
+  // sizeClass = computed(() => {
+  //   const isLeftSidebarCollapsed = this.isSidebarCollapsed();
+  //   if (isLeftSidebarCollapsed) {
+  //     return '';
+  //   }
+  //   return this.screenWidth() > 768 ? 'body-trimmed' : 'body-md-screen';
+  // });
   patient:userInterface =     {
-    name:'sarich imene',
+    name:'sraich imene',
     age:20,
     NSS: 12345678901,
     dateNaissance: '10/20/2004',

@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { userInterface } from './consultation-interface';
 import { FormsModule } from '@angular/forms';
 import { TestCategories } from './bilan-categorie';
+import { userInterface } from '../info-patient-interface';
 
-interface CheckboxOption {
-  label: string;
-  selected: boolean;
+
+interface Data {
+  medicament: string;
+  dose: string; 
+  duree: number;
+  mesureDate:'mois'|'jours';
 }
 
-type SubCategoryOptions = {
-  [key: string]: CheckboxOption[];
-};
 @Component({
   selector: 'app-consultation',
   imports: [CommonModule,FormsModule],
@@ -46,8 +46,19 @@ export class ConsultationComponent {
   showPopupBilan = false; // to show the popup
   showPopupBilan1 = false; // to show the popup
   Bilan = [
-    { name: 'Bilan1', date: '24/10/2024', editing: false }
+    { name: 'Bilan1', date: '24/10/2024', editing: false },
+    { name: 'Bilan1', date: '24/10/2024', editing: false },
   ];
+  // ici devrai etre la liste des soins njibouha m le back
+  Soins=[
+    {name: 'Soin1', date: '24/10/2024',},
+    {name: 'Soin2', date: '24/10/2024',},
+    {name: 'Soin1', date: '24/10/2024',},
+    {name: 'Soin1', date: '24/10/2024',},
+    {name: 'Soin1', date: '24/10/2024',},
+    {name: 'Soin1', date: '24/10/2024',},
+
+  ]
   isNameValid= true; 
   // Add a new bilan
   addBilan(): void {
@@ -60,7 +71,6 @@ export class ConsultationComponent {
     });
     this.isNameValid = false; 
   }
-
   // Edit an existing bilan
   editBilan(index: number): void {
     this.Bilan[index].editing = !this.Bilan[index].editing;
@@ -107,8 +117,10 @@ addOrdonnance(): void {
 }
 
 // Edit an existing bilan
-editOrdonnance(index: number): void {
-  this.Ordonnance[index].editing = !this.Ordonnance[index].editing;
+//le contenu la fonction addOrdonnance needs to change to somthing where they click they get the info of that ordonnance and not redo from the start -->
+
+editOrdonnance(): void {
+  this.showPopup = true;
 }
 deleteOrdonnance(index: number): void {
   this.Ordonnance.splice(index, 1);
@@ -125,6 +137,34 @@ saveOrdonnance(index: number): void {
   } else {
     this.isNameValid = false; // Keep invalid until a valid name is entered
   }
+}
+mesureDate:"mois"|"jours"= "jours";
+
+TableData:Data[]=[
+  {
+    medicament: 'Ibuprofen',
+    dose: '2 fois par jours',
+    duree: 5,
+    mesureDate:'mois',
+  }
+];
+addRow(): void{
+  this.TableData.push({
+  medicament: '',
+  dose:'',
+  duree: 0,
+  mesureDate:'mois',
+  
+});
+}
+saveRow(index: number): void {
+  const row = this.TableData[index];
+  // Here, you can call a service or perform additional actions to save the data
+  console.log('Row saved:', row);
+}
+deleteRow(index: number): void {
+  // Remove the row at the specified index
+  this.TableData.splice(index, 1);
 }
 closePopup(): void {
   this.showPopup = false; // Hide the pop-up when the close button is clicked
@@ -190,7 +230,6 @@ saveBilanPopup() {
   console.log('Selected Category:', this.selectedTestCategory);
   console.log('Selected Sub-Categories:', this.selectedSubCategories);
   console.log("Selected Tests: ", this.selectedTests);
-  console.log("Custom Tests: ", this.customTests);
   this.closePopupBilan();
 }
 openPopup(){

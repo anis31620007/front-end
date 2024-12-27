@@ -66,15 +66,17 @@
     </div>
   
     <!-- Main Content -->
-    <div class="flex-1 p-5 bg-[#EAEDF4]">
-      <div class="flex  gap-5">
-        <!-- flex-wrap -->
+    <div class="flex-1 p-5  bg-[#EAEDF4] ">
+      <h1 class="text-3xl font-bold mb-2">Consultation</h1>
+      <div class="flex flex-col md:flex-row gap-5">
+ 
         <!-- Left Section: Info Patient -->
-        <div class="info-card flex flex-col w-3/12 bg-white rounded-lg p-5 ">
+         <div class="flex flex-col w-3/12 min-w-[200px] gap-4">
+        <div class="info-card  bg-white rounded-lg p-5  ">
           <div class="text-center mb-5">
-            <div class="w-20 h-20 mx-auto mb-4">
+            <!-- <div class="w-20 h-20 mx-auto mb-4">
               <img src="../../assets/icons/teenyicons--user-square-outline.png" alt="" class="w-full h-full object-cover">
-            </div>
+            </div> -->
             <h3 class="text-lg font-bold">{{patient.name}}</h3>
             <p class="text-sm text-gray-600">Age: {{patient.age}}</p>
           </div>
@@ -106,11 +108,23 @@
             </div>
           </div>
         </div>
-  
+        <div class=" bg-white rounded-lg min-w-[200px] p-5">
+          <h2 class="text-xl font-bold mb-3">Bilan</h2>
+              <ul class="list-none p-0 mb-auto overflow-auto text-[12px] max-h-[200px]">
+                <li *ngFor="let soins of Soins; let i = index" class="flex items-center mb-2 p-2 bg-gray-100 rounded-lg custom-scrollbar">
+                  <img src="../../assets/icons/raphael--page.png" alt="" class="h-6 mr-2">
+                  <div>
+                    <span class="text-[12px] font-medium">{{ soins.name }}</span>
+                    <p class="text-[10px] font-normal">{{ soins.date }}</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            </div>
         <!-- Right Section: Consultation & Bilan -->
-        <div class="flex flex-col w-9/12 gap-5 ">
+        <div class="flex flex-col  w-9/12 gap-5 ">
           <!-- Top Row: Consultation & Bilan -->
-          <div class="flex gap-5">
+          <div class="flex flex-col md:flex-row gap-5">
             <!-- Left Section -->
             <div class="right-section">
               <!-- Medical History Section -->
@@ -153,7 +167,110 @@
               </div>
             </div>
             <!--bilan List -->
-            <div class="bg-white rounded-lg p-5 flex-1">
+
+            <div class="bg-white flex flex-col rounded-lg p-5 pb-2 gap-2">
+              <h2 class="text-xl font-bold mb-3">Bilan</h2>
+              <ul 
+                class="list-none p-0 mb-auto text-[12px] overflow-y-auto max-h-[250px]">
+                <li 
+                  *ngFor="let bilan of Bilan; let i = index" 
+                  class="flex items-center mb-2 p-2 bg-gray-100 rounded-lg min-w-[150px] ">
+                  <img 
+                    src="../../assets/icons/raphael--page.png" 
+                    alt="" 
+                    class="h-6 mr-2">
+                  <div>
+                    <span 
+                      class="text-[12px] font-medium">{{ bilan.name }}</span>
+                    <p 
+                      class="text-[10px] font-normal">{{ bilan.date }}</p>
+                  </div>
+                </li>
+              </ul>
+              <div class="flex justify-end mt-auto">
+                <button 
+                  (click)="popupInit()" 
+                  class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] text-xs"
+                  [disabled]="!isNameValid">
+                  Demander bilan
+                </button>
+              </div>
+            </div>
+            
+            <!-- Popup1 -->
+            <div *ngIf="showPopupBilan1" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+              <div class="bg-white p-7 rounded-lg shadow-lg h-[250px] w-[300px]">
+                
+                  <!-- Main Category Selection -->
+                  <div class="flex flex-col gap-4">
+                    <label for="category">Type du bilan:</label>
+                    <select id="category" [(ngModel)]="selectedTestCategory" (change)="onCategoryChange()" class="border p-2 rounded">
+                      <option value="" disabled selected>Choisir le type du bilan</option>
+                      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+                    </select>
+                    <button
+                      class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg text-xs"
+                      (click)="openPopup()"
+                      [disabled]="!showPopupBilan1"
+                      >Next
+                    </button>
+                    <button (click)="closePopupBilan()" class="bg-[#FBD0B1] text-[#C82D2B] py-2 px-4 rounded-lg text-xs">Annuler</button>
+
+                   </div>
+
+              </div> 
+            </div>   
+
+            <!-- Popup -->
+              <div *ngIf="showPopupBilan" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                <div class="bg-white p-7 rounded-lg shadow-lg w-[700px] h-[500px] flex flex-col">
+                      <!-- Subcategory Dropdown and Add Button -->
+                    <div class="flex flex-col gap-4">
+                        <label for="subcategory">Sous-categorie</label>
+                        <select 
+                              id="subcategory" 
+                              [(ngModel)]="selectedSubCategory"  
+                              class="border p-2 rounded" 
+                              [disabled]="!selectedTestCategory">
+                              <option value=""  disabled selected>Choisir la sous-categorie</option>
+                              <option *ngFor="let subcategory of subcategories" [value]="subcategory">{{ subcategory }}</option>
+                          </select>
+                          <button 
+                              (click)="addSubCategory()" 
+                              class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg text-xs"
+                              [disabled]="!selectedSubCategory">Add Subcategory</button>
+                    </div>
+                    <div class="overflow-y-auto flex-1 mb-4 max-h-[300px]">
+                      <!-- Display Selected Subcategories and Tests -->
+                      <div *ngIf="selectedSubCategories.length > 0">
+                        <div *ngFor="let subcategory of selectedSubCategories">
+                          <div class="font-bold">{{ subcategory }}</div>
+                          <!-- Display Tests for Each Subcategory -->
+                          <div *ngIf="selectedTests[subcategory]">
+                            <label class="font-medium">Select Tests:</label>
+                            <div *ngFor="let test of getObjectKeys(selectedTests[subcategory])" class="flex items-center mt-2">
+                              <input 
+                                type="checkbox" 
+                                [(ngModel)]="selectedTests[subcategory][test]" 
+                                (change)="onTestChange(subcategory, test, $event)" />
+                              <span class="ml-2">{{ test }}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>   
+                    </div>
+
+                        <!-- Action Buttons -->
+                    <div class="flex justify-end ">
+                      <button (click)="closePopupBilan()" class="bg-[#FBD0B1] text-[#C82D2B] py-2 px-4 rounded-lg text-xs mr-4">Annuler</button>
+                      <button (click)="saveBilanPopup()" class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg text-xs">Sauvegarder</button>
+                    </div>
+                  </div>
+              </div>
+
+
+            <!-- correct bilan -->
+            <!-- <div class="bg-white rounded-lg p-5 flex-1">
               <h2 class="text-xl font-bold mb-3">Bilan</h2>
               <ul class="list-none p-0 mb-auto text-[12px]">
                 <li *ngFor="let bilan of Bilan; let i = index" class="flex items-center mb-2 p-2 bg-gray-100 rounded-lg">
@@ -173,89 +290,10 @@
                     <button (click)="deleteBilan(i)"><img src="../../assets/icons/material-symbols--delete-outline.png" alt="delete" class="h-4"></button>
                   </div>
                 </li>
-              </ul>
-              <div class="flex justify-end mt-auto">
-                <button (click)="addBilan()" class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs"
-                [disabled]="!isNameValid" >Ajouter</button>
-              </div>
-            </div>
-
-            <!-- Popup1 -->
-            <div *ngIf="showPopupBilan1" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-                <div class="bg-white p-7 rounded-lg shadow-lg h-[250px] w-[300px]">
-                  
-                    <!-- Main Category Selection -->
-                    <div class="flex flex-col gap-4">
-                      <label for="category">Type du bilan:</label>
-                      <select id="category" [(ngModel)]="selectedTestCategory" (change)="onCategoryChange()" class="border p-2 rounded">
-                        <option value="" disabled selected>Choisir le type du bilan</option>
-                        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-                      </select>
-                      <button
-                        class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg text-xs"
-                        (click)="openPopup()"
-                        [disabled]="!showPopupBilan1"
-                        >Next
-                      </button>
-                      <button (click)="closePopupBilan()" class="bg-[#FBD0B1] text-[#C82D2B] py-2 px-4 rounded-lg text-xs">Annuler</button>
-
-                </div>
-
-            </div> 
-        </div>   
-
-<!-- Popup -->
-<div *ngIf="showPopupBilan" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-    <div class="bg-white p-7 rounded-lg shadow-lg w-[700px] h-[500px] flex flex-col">
-        <!-- Subcategory Dropdown and Add Button -->
-        <div class="flex flex-col gap-4">
-          <label for="subcategory">Sous-categorie</label>
-          <select 
-            id="subcategory" 
-            [(ngModel)]="selectedSubCategory"  
-            class="border p-2 rounded" 
-            [disabled]="!selectedTestCategory">
-            <option value=""  disabled selected>Choisir la sous-categorie</option>
-            <option *ngFor="let subcategory of subcategories" [value]="subcategory">{{ subcategory }}</option>
-          </select>
-          <button 
-            (click)="addSubCategory()" 
-            class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg text-xs"
-            [disabled]="!selectedSubCategory">Add Subcategory</button>
-        </div>
-<div class="overflow-y-auto flex-1 mb-4 max-h-[300px]">
-    <!-- Display Selected Subcategories and Tests -->
-    <div *ngIf="selectedSubCategories.length > 0">
-      <div *ngFor="let subcategory of selectedSubCategories">
-        <div class="font-bold">{{ subcategory }}</div>
-        <!-- Display Tests for Each Subcategory -->
-        <div *ngIf="selectedTests[subcategory]">
-          <label class="font-medium">Select Tests:</label>
-          <div *ngFor="let test of getObjectKeys(selectedTests[subcategory])" class="flex items-center mt-2">
-            <input 
-              type="checkbox" 
-              [(ngModel)]="selectedTests[subcategory][test]" 
-              (change)="onTestChange(subcategory, test, $event)" />
-            <span class="ml-2">{{ test }}</span>
-          </div>
-        </div>
-      </div>
-    </div>   
-  </div>
-  
-      <!-- Action Buttons -->
-      <div class="flex justify-end ">
-        <button (click)="closePopupBilan()" class="bg-[#FBD0B1] text-[#C82D2B] py-2 px-4 rounded-lg text-xs mr-4">Annuler</button>
-        <button (click)="saveBilanPopup()" class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg text-xs">Sauvegarder</button>
-      </div>
-    </div>
-  </div>
-  
-
-  
-  
-  
-              
+              </ul> -->
+             
+            <!-- </div> -->
+ 
             <!-- Ordonnances List -->
             <div class="bg-white rounded-lg p-5 flex-1">
               <h2 class="text-xl font-bold mb-3">Ordonnances</h2>
@@ -274,7 +312,7 @@
                     <p class="text-[10px] font-normal ">{{ ordonnance.date }}</p>
                   </div>
                   <div class="ml-auto flex space-x-2">
-                    <button (click)="editOrdonnance(i)"><img src="../../assets/icons/lucide--edit.png" alt="edit" class="h-4"></button>
+                    <button (click)="editOrdonnance()"><img src="../../assets/icons/lucide--edit.png" alt="edit" class="h-4"></button>
                     <button (click)="deleteOrdonnance(i)"><img src="../../assets/icons/material-symbols--delete-outline.png" alt="delete" class="h-4"></button>
                   </div>
                 </li>
@@ -286,42 +324,122 @@
               </div>
             </div>
 
-            <!-- Pop-up Modal -->
+            <!-- Pop-up   Ordonnace -->
             <div *ngIf="showPopup" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-                <div class="bg-white p-7 rounded-lg shadow-lg w-[700px] h-[500px] flex flex-col">
-                  <div class="flex justify-between">
-                    <div class="flex flex-col text-[15px]">
-                      <span class="font-bold text-[16px]">Dr somthing</span>
-                      <span class="font-medium">Adress</span>
-                      <div class="flex items-center text-sm font-medium">
-                        <img src="../../assets/icons/mdi-light--phone.png" alt="" class="w-4 h-4 mr-2">
-                        <span>Num de tel</span>
-                      </div>
-                    </div>
-                    <div class="flex flex-col text-[15px]">
-                      <span class="font-medium">{{todayDate}}</span>
-                      <span class="font-medium">{{patient.name}}</span>
-                      <span class="font-medium">Age:{{patient.age}}</span>
+              <div class="bg-white p-7 rounded-lg shadow-lg w-[700px] h-[500px] flex flex-col">
+                <!-- Header Section -->
+                <div class="flex justify-between mb-5">
+                  <div class="flex flex-col text-[15px]">
+                    <span class="font-bold text-[16px]">Dr somthing</span>
+                    <span class="font-medium">Adress</span>
+                    <div class="flex items-center text-sm font-medium">
+                      <img src="../../assets/icons/mdi-light--phone.png" alt="" class="w-4 h-4 mr-2" />
+                      <span>Num de tel</span>
                     </div>
                   </div>
-                  <h1 class="flex items-center justify-center text-[26px] font-bold">Ordonnance</h1>
-              
-                  <!-- Textarea takes the remaining space -->
-                  <textarea placeholder="Write details here..." class="w-full flex-grow border border-gray-300 rounded-md p-2 resize-none focus:outline-none"></textarea>
-              
-                  <div class="flex flex-row justify-end gap-2 mt-3">
-                    <button (click)="closePopup()" class="bg-[#FBD0B1] text-[#C82D2B] py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs flex items-center justify-center">Anuller</button>
-                    <button class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs flex items-center justify-center">Sauvegarder</button>
+                  <div class="flex flex-col text-[15px]">
+                    <span class="font-medium">{{todayDate}}</span>
+                    <span class="font-medium">{{patient.name}}</span>
+                    <span class="font-medium">Age: {{patient.age}}</span>
                   </div>
                 </div>
+
+                <h1 class="flex items-center justify-center text-[26px] font-bold mb-5">Ordonnance</h1>
+
+                <!-- Donnees Section -->
+                <div class="overflow-y-auto max-h-[300px]">
+                  <table class="min-w-full table-auto border-collapse">
+                    <thead>
+                      <tr >
+                        <th class="px-4 py-2 border-b font-medium">Medicament</th>
+                        <th class="px-4 py-2 border-b font-medium">Dose</th>
+                        <th class="px-4 py-2 border-b font-medium">Duree</th>
+                        <th class="px-4 py-2 border-b font-medium">Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let row of TableData; let i = index">
+                        <td class="px-4 py-2 border-b">
+                          <input
+                            [(ngModel)]="row.medicament"
+                            (blur)="saveRow(i)"
+                            (keydown.enter)="saveRow(i)"
+                            placeholder="nom medicament"
+                            class="w-full px-2 py-1 border rounded-md"
+                          />
+                        </td>
+                        <td class="px-4 py-2 border-b">
+                          <input
+                            [(ngModel)]="row.dose"
+                            (blur)="saveRow(i)"
+                            (keydown.enter)="saveRow(i)"
+                            placeholder="dose"
+                            class="w-full px-2 py-1 border rounded-md"
+                          />
+                        </td>
+                        <td class="px-3 py-2 border-b">
+                          <div class="flex flex-row">
+                            <input
+                              [(ngModel)]="row.duree"
+                              (blur)="saveRow(i)"
+                              (keydown.enter)="saveRow(i)"
+                              type="number"
+                              class="w-full px-2 py-1 border rounded-md "
+                            />
+                            <select
+                              [(ngModel)]="mesureDate"
+                              class="border border-gray-300 rounded-md p-2 text-sm"
+                            >
+                              <option
+                                *ngFor="let mesure of TableData"
+                                [value]="mesure.mesureDate"
+                              >
+                                {{ mesure.mesureDate }}
+                              </option>
+                            </select>
+                          </div>
+                        </td>
+                        <td class="px-4 py-2 border-b text-center">
+                          <button (click)="deleteRow(i)"><img src="../../assets/icons/material-symbols--delete-outline.png" alt="delete" class="h-5 w-auto"></button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- Buttons Section -->
+        
+                  <button
+                    (click)="addRow()"
+                    class="bg-[#78B2CA] text-white font-bold  mt-2 mb-2 py-2 px-4 rounded-lg h-[35px] w-auto text-[16px] flex items-center justify-center"
+                  >
+                    Ajouter
+                  </button>
+                
+
+                <div class="mt-auto flex flex-row justify-end gap-2">
+                  <button
+                    (click)="closePopup()"
+                    class="bg-[#FBD0B1] text-[#C82D2B] py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs flex items-center justify-center"
+                  >
+                    Annuler
+                  </button>
+                  <button
+                    class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs flex items-center justify-center"
+                  >
+                    Sauvegarder
+                  </button>
+                </div>
               </div>
+            </div>
+
               
         </div>
   
           <!-- Bottom Row: Resume -->
           <div class="bg-white rounded-lg p-5 flex-1 flex flex-col">
             <h2 class="text-xl font-bold mb-3">Résumé</h2>
-            <textarea placeholder="Write details here..." class="w-full h-40 border border-gray-300 rounded-md p-2 resize-none focus:outline-none"></textarea>
+            <textarea placeholder="Write details here..." class="w-full h-full border border-gray-300 rounded-md p-2 resize-none focus:outline-none"></textarea>
             <div class="flex justify-end mt-3">
               <button class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs flex items-center justify-center">
                 Sauvegarder
