@@ -70,7 +70,7 @@
       <h1 class="text-3xl font-bold mb-2">Consultation</h1>
       <div class="flex flex-col md:flex-row gap-5">
  
-        <!-- Left Section: Info Patient -->
+        <!-- Left Section: Info Patient: where we are gonna inject les info ta3 patient, i used une variable aptient que j'ai preremplie f ts, elle est de type userInterface -->
          <div class="flex flex-col w-3/12 min-w-[200px] gap-4">
         <div class="info-card  bg-white rounded-lg p-5  ">
           <div class="text-center mb-5">
@@ -123,11 +123,11 @@
             </div>
         <!-- Right Section: Consultation & Bilan -->
         <div class="flex flex-col  w-9/12 gap-5 ">
-          <!-- Top Row: Consultation & Bilan -->
+          <!-- Top Row: Consultation & Bilan et antecedent -->
           <div class="flex flex-col md:flex-row gap-5">
             <!-- Left Section -->
             <div class="right-section">
-              <!-- Medical History Section -->
+              <!-- Medical History Section = antecedent, pour l'instant c'est statique mais we need to make it dynamique-->
               <div class="medical-history bg-white rounded-lg p-5 flex-grow ">
                 <h2 class="text-2xl font-bold mb-2">Antécédents</h2>
                 <ul class="flex flex-col gap-2 text-[12px]">
@@ -187,17 +187,17 @@
                   </div>
                 </li>
               </ul>
-              <div class="flex justify-end mt-auto">
+              <div class="flex justify-end mt-auto"><!-- initialiser les variable ta3 le pop up plus ouvrir le premier popup  -->
                 <button 
-                  (click)="popupInit()" 
-                  class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] text-xs"
-                  [disabled]="!isNameValid">
-                  Demander bilan
-                </button>
+                  (click)="popupInit()"  
+                  class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] text-xs">Demander bilan</button>
+                  <!-- [disabled]="!isNameValid" -->
+                  
+                
               </div>
             </div>
             
-            <!-- Popup1 -->
+            <!-- Popup1  pour selectioner le type du bilan : radiologique ou sanguin it get triguers when showpopupbilan1 is true and that is when we click on demander-->
             <div *ngIf="showPopupBilan1" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
               <div class="bg-white p-7 rounded-lg shadow-lg h-[250px] w-[300px]">
                 
@@ -221,7 +221,7 @@
               </div> 
             </div>   
 
-            <!-- Popup -->
+            <!-- Popup pour les sous gategorie du bilan -->
               <div *ngIf="showPopupBilan" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
                 <div class="bg-white p-7 rounded-lg shadow-lg w-[700px] h-[500px] flex flex-col">
                       <!-- Subcategory Dropdown and Add Button -->
@@ -260,10 +260,11 @@
                       </div>   
                     </div>
 
-                        <!-- Action Buttons -->
+                       
                     <div class="flex justify-end ">
                       <button (click)="closePopupBilan()" class="bg-[#FBD0B1] text-[#C82D2B] py-2 px-4 rounded-lg text-xs mr-4">Annuler</button>
                       <button (click)="saveBilanPopup()" class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg text-xs">Sauvegarder</button>
+
                     </div>
                   </div>
               </div>
@@ -330,6 +331,7 @@
                 <!-- Header Section -->
                 <div class="flex justify-between mb-5">
                   <div class="flex flex-col text-[15px]">
+                    <!-- from where do we get the infos of the dotor ???  -->
                     <span class="font-bold text-[16px]">Dr somthing</span>
                     <span class="font-medium">Adress</span>
                     <div class="flex items-center text-sm font-medium">
@@ -337,6 +339,7 @@
                       <span>Num de tel</span>
                     </div>
                   </div>
+                  <!-- info patient -->
                   <div class="flex flex-col text-[15px]">
                     <span class="font-medium">{{todayDate}}</span>
                     <span class="font-medium">{{patient.name}}</span>
@@ -346,7 +349,7 @@
 
                 <h1 class="flex items-center justify-center text-[26px] font-bold mb-5">Ordonnance</h1>
 
-                <!-- Donnees Section -->
+                <!-- Tableau des medicament: 4 champs: medicament,dose,duree,delete -->
                 <div class="overflow-y-auto max-h-[300px]">
                   <table class="min-w-full table-auto border-collapse">
                     <thead>
@@ -360,6 +363,8 @@
                     <tbody>
                       <tr *ngFor="let row of TableData; let i = index">
                         <td class="px-4 py-2 border-b">
+                          <!-- saveRow get triggered when we click on enter or we click ouside the input field, 
+                           it save the input in variable that saves all the row not just the one that got changed we can specifie it more if we want by creating 3 diffrent functions to save eache input individualy-->
                           <input
                             [(ngModel)]="row.medicament"
                             (blur)="saveRow(i)"
@@ -436,7 +441,7 @@
               
         </div>
   
-          <!-- Bottom Row: Resume -->
+          <!-- Bottom Row: Resume it's a textarea, i didn't make a function to save it conetent-->
           <div class="bg-white rounded-lg p-5 flex-1 flex flex-col">
             <h2 class="text-xl font-bold mb-3">Résumé</h2>
             <textarea placeholder="Write details here..." class="w-full h-full border border-gray-300 rounded-md p-2 resize-none focus:outline-none"></textarea>

@@ -6,12 +6,15 @@ import { DossierpatientsComponent } from './pages/dossierpatients/dossierpatient
 import { ConsultationComponent } from './pages/consultation/consultation.component';
 import { InfoPatientComponent } from './pages/info-patient/info-patient.component';
 import { LaboratinComponent } from './pages/laboratin/laboratin.component';
+import { ListSoinsComponent } from './pages/list-soins/list-soins.component';
 
 export const routes: Routes = [
-  { path: '', component: ConsultationComponent},
+  { path: '', component: ListSoinsComponent},
   {path: 'Doctor', component: InfoPatientComponent},
 {path: 'Consulatation', component:  ConsultationComponent},
 {path: 'Laboratin', component:  LaboratinComponent},
+{path: 'Liste-soins', component:  ListSoinsComponent},
+
 ];
 
 @NgModule({
