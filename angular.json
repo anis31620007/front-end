@@ -82,7 +82,8 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.css"],
+            "styles": ["src/styles.css",
+            "https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css"],
             "scripts": []
           }
         }

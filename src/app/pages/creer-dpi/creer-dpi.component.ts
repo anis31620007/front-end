@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+//import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-creer-dpi',
-  imports: [],
   templateUrl: './creer-dpi.component.html',
-  styleUrl: './creer-dpi.component.css'
+  styleUrls: ['./creer-dpi.component.css'],
 })
 export class CreerDpiComponent {
-
+ 
 }
