@@ -117,7 +117,7 @@ export class LaboratinComponent {
   // );
   @ViewChild('chartCanvas', { static: true }) chartCanvas!: ElementRef<HTMLCanvasElement>;
   chart!: Chart;
-  showChart=false;
+ 
    createChart(): void {
     
     try {
@@ -194,7 +194,6 @@ export class LaboratinComponent {
   } catch (error) {
     console.error('Error in createChart:', error);
   }
-  this.showChart = true; 
   }
 
   
