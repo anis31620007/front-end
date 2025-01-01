@@ -17,9 +17,9 @@
             <span
               class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
             >
-              <i class="bx bx-home text-xl text-gray-500"></i>
+              <i class="bx bx-file text-xl text-gray-400"></i>
             </span>
-            <span class="text-sm font-medium">Dashboard</span>
+            <span class="text-sm font-medium">Liste de DPI </span>
           </a>
         </li>
         <li>
@@ -50,24 +50,13 @@
             <span class="text-sm font-medium">Settings</span>
           </a>
         </li>
-        <li>
-          <a
-            href="#"
-            class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
-          >
-            <span
-              class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
-              ><i class="bx bx-log-out"></i></span
-            >
-            <span class="text-sm font-medium">Logout</span>
-          </a>
-        </li>
+      
       </ul>
     </div>
   
  <!-- Main Content -->
-<div class="flex flex-col md:flex-row gap-5 p-5 bg-[#EAEDF4]">
-
+<div class="flex flex-col flex-1 md:flex-row gap-5 p-5 bg-[#EAEDF4]">
+  
     <!-- Left Section: Info Patient -->
     <div class="flex flex-col w-full md:w-3/12 gap-4">
       <div class="info-card bg-white rounded-lg p-5">
@@ -119,7 +108,7 @@
   
     <!-- Right Section -->
     <div class="flex flex-col w-full md:w-9/12 gap-5">
-        <div class="mx-auto max-w-4xl bg-white rounded-lg p-5 flex-1">
+        <div class="mx-auto w-full bg-white rounded-lg p-5 flex-1">
           <h2 class="text-xl font-bold mb-3">Resultats</h2>
           <table class="min-w-full table-auto border-collapse">
             <thead>
@@ -157,9 +146,14 @@
     
           <div class="flex flex-row justify-end gap-2 mt-3">
             <!-- <button (click)="addRow()" class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-auto text-xs flex items-center justify-center">Ajouter</button> -->
-            <button  class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-auto text-xs flex items-center justify-center">Generer Graphe</button>
+            <button (click)="createChart()" class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-auto text-xs flex items-center justify-center">Generer Graphe</button>
           </div>
         </div>
+        <div 
+        
+        class="flex items-center justify-center p-5 h-auto w-full ">
+        <canvas #chartCanvas class="w-full h-full"></canvas>
+      </div>
       </div>
     
     </div>

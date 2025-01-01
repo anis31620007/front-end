@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { TestCategories } from './bilan-categorie';
 import { userInterface } from '../info-patient-interface';
 
-
 interface Data {
   medicament: string;
   dose: string; 

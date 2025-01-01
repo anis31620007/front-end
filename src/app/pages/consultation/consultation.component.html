@@ -17,9 +17,22 @@
             <span
               class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
             >
-              <i class="bx bx-home text-xl text-gray-500"></i>
-            </span>
-            <span class="text-sm font-medium">Dashboard</span>
+            <i class="bx bx-file text-xl text-gray-400"></i>
+          </span>
+          <span class="text-sm font-medium">Liste de DPI </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+          >
+            <span
+              class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            >
+            <i class="bx bx-file-plus text-xl text-gray-400"></i>
+          </span>
+          <span class="text-sm font-medium">Creer DPI </span>
           </a>
         </li>
         <li>
@@ -50,18 +63,7 @@
             <span class="text-sm font-medium">Settings</span>
           </a>
         </li>
-        <li>
-          <a
-            href="#"
-            class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
-          >
-            <span
-              class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
-              ><i class="bx bx-log-out"></i></span
-            >
-            <span class="text-sm font-medium">Logout</span>
-          </a>
-        </li>
+
       </ul>
     </div>
   
@@ -109,7 +111,7 @@
           </div>
         </div>
         <div class=" bg-white rounded-lg min-w-[200px] p-5">
-          <h2 class="text-xl font-bold mb-3">Bilan</h2>
+          <h2 class="text-xl font-bold mb-3">Soins</h2>
               <ul class="list-none p-0 mb-auto overflow-auto text-[12px] max-h-[200px]">
                 <li *ngFor="let soins of Soins; let i = index" class="flex items-center mb-2 p-2 bg-gray-100 rounded-lg custom-scrollbar">
                   <img src="../../assets/icons/raphael--page.png" alt="" class="h-6 mr-2">
@@ -270,30 +272,7 @@
               </div>
 
 
-            <!-- correct bilan -->
-            <!-- <div class="bg-white rounded-lg p-5 flex-1">
-              <h2 class="text-xl font-bold mb-3">Bilan</h2>
-              <ul class="list-none p-0 mb-auto text-[12px]">
-                <li *ngFor="let bilan of Bilan; let i = index" class="flex items-center mb-2 p-2 bg-gray-100 rounded-lg">
-                  <img src="../../assets/icons/raphael--page.png" alt="" class="h-6 mr-2">
-                  <div>
-                    <input *ngIf="bilan.editing" 
-                    [(ngModel)]="bilan.name" 
-                    type="text" placeholder="Enter nom" 
-                    (keydown.enter)="saveBilan(i)" 
-                    (blur)="saveBilan(i)" 
-                    class="border-[0.5px] text-[12px] rounded px-2 py-1">
-                    <span *ngIf="!bilan.editing" class="text-[12px] font-medium">{{ bilan.name }}</span>
-                    <p class="text-[10px] font-normal">{{ bilan.date }}</p>
-                  </div>
-                  <div class="ml-auto flex space-x-2">
-                    <button (click)="editBilan(i)"><img src="../../assets/icons/lucide--edit.png" alt="edit" class="h-4"></button>
-                    <button (click)="deleteBilan(i)"><img src="../../assets/icons/material-symbols--delete-outline.png" alt="delete" class="h-4"></button>
-                  </div>
-                </li>
-              </ul> -->
-             
-            <!-- </div> -->
+ 
  
             <!-- Ordonnances List -->
             <div class="bg-white rounded-lg p-5 flex-1">
@@ -388,20 +367,13 @@
                               [(ngModel)]="row.duree"
                               (blur)="saveRow(i)"
                               (keydown.enter)="saveRow(i)"
-                              type="number"
                               class="w-full px-2 py-1 border rounded-md "
                             />
-                            <select
+                            <!-- <select
                               [(ngModel)]="mesureDate"
                               class="border border-gray-300 rounded-md p-2 text-sm"
                             >
-                              <option
-                                *ngFor="let mesure of TableData"
-                                [value]="mesure.mesureDate"
-                              >
-                                {{ mesure.mesureDate }}
-                              </option>
-                            </select>
+                            </select> -->
                           </div>
                         </td>
                         <td class="px-4 py-2 border-b text-center">

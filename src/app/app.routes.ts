@@ -9,11 +9,11 @@ import { LaboratinComponent } from './pages/laboratin/laboratin.component';
 import { ListSoinsComponent } from './pages/list-soins/list-soins.component';
 
 export const routes: Routes = [
-  { path: '', component: ListSoinsComponent},
+  { path: '', component: ConsultationComponent },
   {path: 'Doctor', component: InfoPatientComponent},
-{path: 'Consulatation', component:  ConsultationComponent},
-{path: 'Laboratin', component:  LaboratinComponent},
-{path: 'Liste-soins', component:  ListSoinsComponent},
+  {path: 'Consulatation', component:  ConsultationComponent},
+  {path: 'Laboratin', component:  LaboratinComponent},
+  {path: 'Liste-soins', component:  ListSoinsComponent},
 
 ];
 
