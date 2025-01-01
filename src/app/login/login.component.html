@@ -1,0 +1,80 @@
+
+<div class="login-container flex h-screen w-screen">
+  <!-- Partie gauche -->
+  <div class="left-section flex-1 bg-white">
+    <div class="background-color"></div>
+    <img src="/nv-im.png" alt="Image à gauche" class="left-image absolute top-5 left-2 w-[700px] h-auto" />
+  </div>
+
+  <!-- Partie droite -->
+  <div class="right-section flex-1 flex flex-col justify-center items-center p-8 bg-gray-100 shadow-lg">
+    <h2 class="font-bold mb-4">Bonjour, Salut!</h2>
+    <p class="text-base mb-6 text-gray-800">Entrez vos informations pour vous connecter.</p>
+    <div class="button-space mb-12"></div>
+    <form (ngSubmit)="onSubmit()" class="w-full max-w-lg flex flex-col gap-4">
+      <!-- Nom d'utilisateur -->
+      <div class="input-group relative flex flex-col w-[430px] h-[80px]">
+        <label for="username" class="mb-1 text-base text-gray-800 font-semibold">Nom d'utilisateur</label>
+        <span class="icon absolute top-[70%] left-2 transform -translate-y-1/2 text-gray-400">
+          <img src="/tt-icon.png" alt="Nom d'utilisateur" class="icon-img w-5 h-5" />
+        </span>
+        <input id="username" [(ngModel)]="username" name="username" type="text" placeholder="utilisateur" class="w-full h-full px-12 py-2 border border-gray-300 rounded-2xl text-base text-gray-800 bg-white placeholder-gray-400" />
+      </div>
+
+      <!-- Mot de passe -->
+      <div class="input-group relative flex flex-col w-[430px] h-[80px]">
+        <label for="password" class="mb-1 text-base text-gray-800 font-semibold">Mot de passe</label>
+        <span class="icon absolute top-[70%] left-2 transform -translate-y-1/2 text-gray-400">
+          <img src="/icon-pass.png" alt="Mot de passe" class="icon-img w-5 h-5" />
+        </span>
+        <input id="password" [(ngModel)]="password" name="password" type="password" placeholder="******" class="w-full h-full px-12 py-2 border border-gray-300 rounded-2xl text-base text-gray-800 bg-white placeholder-gray-400" />
+      </div>
+
+      <!-- Affichage des erreurs -->
+      <div *ngIf="errorMessage" class="error-message text-red-500 font-bold mt-4 text-center">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Options : Se rappeler de moi et mot de passe oublié -->
+      <div class="options flex justify-between items-center w-full">
+        <div class="left-option flex items-center gap-2">
+          <label class="text-gray-500 text-lg flex items-center">
+            <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe" class="w-4 h-4 cursor-pointer" />
+            Se rappeler de moi
+          </label>
+        </div>
+      </div>
+
+      <div class="button-space mb-6"></div>
+
+      <!-- Bouton Se connecter -->
+      <button type="submit" class="login-button w-full h-[56px] bg-[#78b2ca] text-white font-bold text-lg rounded-xl border-none cursor-pointer">
+        Se connecter
+      </button>
+
+      <!-- Bouton Se connecter avec Google -->
+      <div id="g_id_onload"
+        data-client_id="1063283462150-6ts5f6dnuq9gl1hilq71sru1rd69bt4m.apps.googleusercontent.com"
+        data-context="signin"
+        data-ux_mode="popup"
+        data-callback="handleCredentialResponse"
+        data-auto_select="false"
+      >
+      </div>
+      <div id="googleSignInButton" class="g_id_signin w-full h-[56px] bg-white text-black border border-black rounded-xl flex items-center justify-center gap-3 cursor-pointer font-semibold">
+        <img src="/google-icon.png" alt="Google Icon" class="google-icon w-6 h-6" />
+        Se connecter avec Google
+      </div>
+    </form>
+
+    <!-- Inscription -->
+    <p class="register-text mt-8 text-lg text-gray-800 text-center">
+      Vous n'avez pas de compte ? <a href="#" class="text-[#78b2ca] font-semibold no-underline">Inscrivez-vous ici</a>
+    </p>
+
+    <!-- Affichage du message d'erreur -->
+    <div *ngIf="errorMessage" class="error-message text-red-500 font-bold mt-4 text-center">
+      {{ errorMessage }}
+    </div>
+  </div>
+</div>
