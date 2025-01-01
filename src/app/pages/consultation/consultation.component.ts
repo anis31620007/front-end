@@ -7,8 +7,7 @@ import { userInterface } from '../info-patient-interface';
 interface Data {
   medicament: string;
   dose: string; 
-  duree: number;
-  mesureDate:'mois'|'jours';
+  duree: string;
 }
 
 @Component({
@@ -18,7 +17,7 @@ interface Data {
   styleUrl: './consultation.component.css'
 })
 export class ConsultationComponent {
-[x: string]: any;
+
   patient:userInterface =     {
     name:'Sraich imene',
     age: 20,
@@ -48,7 +47,7 @@ export class ConsultationComponent {
     { name: 'Bilan1', date: '24/10/2024', editing: false },
     { name: 'Bilan1', date: '24/10/2024', editing: false },
   ];
-  // ici devrai etre la liste des soins njibouha m le back
+  // ici c'est la liste des soins njibouha m le back
   Soins=[
     {name: 'Soin1', date: '24/10/2024',},
     {name: 'Soin2', date: '24/10/2024',},
@@ -96,82 +95,7 @@ export class ConsultationComponent {
       this.selectedTests = {};
       this.subcategories=[]; 
   }
-///////////////////////////////////////////////////
-
-
-Ordonnance = [
-  { name: 'Ordonnance1', date: '24/10/2024', editing: false }
-];
-showPopup=false; 
-// Add a new bilan
-addOrdonnance(): void {
-  const today = new Date();
-  const formattedDate = today.toLocaleDateString(); // Get today's date
-  this.Ordonnance.push({
-    name: '',
-    date: formattedDate,
-    editing: true // Enable editing mode for the new bilan
-  });
-  this.isNameValid = false; 
-}
-
-// Edit an existing bilan
-//le contenu la fonction addOrdonnance needs to change to somthing where they click they get the info of that ordonnance and not redo from the start -->
-
-editOrdonnance(): void {
-  this.showPopup = true;
-}
-deleteOrdonnance(index: number): void {
-  this.Ordonnance.splice(index, 1);
-}
-todayDate: string = '';
-/*cette fonction c'est pour valider quand on click sur entre + ne pas valider loukan le nom makanch*/
-saveOrdonnance(index: number): void {
-  if (this.Ordonnance[index].name.trim().length > 0) {
-    this.Ordonnance[index].editing = false;
-    this.isNameValid = true; // Mark as valid when a name is entered
-    this.showPopup = true;
-    const today = new Date();
-  this.todayDate = today.toLocaleDateString();
-  } else {
-    this.isNameValid = false; // Keep invalid until a valid name is entered
-  }
-}
-mesureDate:"mois"|"jours"= "jours";
-
-TableData:Data[]=[
-  {
-    medicament: 'Ibuprofen',
-    dose: '2 fois par jours',
-    duree: 5,
-    mesureDate:'mois',
-  }
-];
-addRow(): void{
-  this.TableData.push({
-  medicament: '',
-  dose:'',
-  duree: 0,
-  mesureDate:'mois',
-  
-});
-}
-saveRow(index: number): void {
-  const row = this.TableData[index];
-  // Here, you can call a service or perform additional actions to save the data
-  console.log('Row saved:', row);
-}
-deleteRow(index: number): void {
-  // Remove the row at the specified index
-  this.TableData.splice(index, 1);
-}
-closePopup(): void {
-  this.showPopup = false; // Hide the pop-up when the close button is clicked
-}
-///////////////////////////////////:::::
-
-
-// Function to handle category selection
+  // Function to handle category selection
 onCategoryChange() {
   if (this.selectedTestCategory) {
     this.subcategories = Object.keys(TestCategories[this.selectedTestCategory] || {});
@@ -235,6 +159,83 @@ openPopup(){
  
   this.showPopupBilan=true; 
 }
+///////////////////////////////////////////////////popup Ordonnace
+
+doctor=
+{
+  name:'something',
+  address:'xxxxxxxxxx',
+  phone:'0979320734',
+}
+Ordonnance = [
+  { name: 'Ordonnance1', date: '24/10/2024', editing: false }
+];
+showPopup=false; 
+// Add a new Ordonnance
+addOrdonnance(): void {
+  const today = new Date();
+  const formattedDate = today.toLocaleDateString(); // Get today's date
+  this.Ordonnance.push({
+    name: '',
+    date: formattedDate,
+    editing: true // Enable editing mode for the new bilan
+  });
+  this.isNameValid = false; 
+}
+
+// Edit an existing ordonnace
+//le contenu la fonction addOrdonnance needs to change to somthing where they click they get the info of that ordonnance and not redo from the start -->
+
+editOrdonnance(): void {
+  this.showPopup = true;
+}
+deleteOrdonnance(index: number): void {
+  this.Ordonnance.splice(index, 1);
+}
+todayDate: string = '';
+/*cette fonction c'est pour valider quand on click sur entre + ne pas valider loukan le nom makanch*/
+saveOrdonnance(index: number): void {
+  if (this.Ordonnance[index].name.trim().length > 0) {
+    this.Ordonnance[index].editing = false;
+    this.isNameValid = true; // Mark as valid when a name is entered
+    this.showPopup = true;
+    const today = new Date();
+  this.todayDate = today.toLocaleDateString();
+  } else {
+    this.isNameValid = false; // Keep invalid until a valid name is entered
+  }
+}
+
+TableData:Data[]=[
+  {
+    medicament: 'Ibuprofen',
+    dose: '2 fois par jours',
+    duree: '5jours',
+    
+  }
+];
+addRow(): void{
+  this.TableData.push({
+  medicament: '',
+  dose:'',
+  duree:'',
+  
+});
+}
+saveRow(index: number): void {
+  const row = this.TableData[index];
+  // Here, you can call a service or perform additional actions to save the data
+  console.log('Row saved:', row);
+}
+deleteRow(index: number): void {
+  // Remove the row at the specified index
+  this.TableData.splice(index, 1);
+}
+closePopup(): void {
+  this.showPopup = false; // Hide the pop-up when the close button is clicked
+}
+///////////////////////////////////:::::
+
 }
 
 

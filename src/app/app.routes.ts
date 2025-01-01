@@ -7,13 +7,15 @@ import { ConsultationComponent } from './pages/consultation/consultation.compone
 import { InfoPatientComponent } from './pages/info-patient/info-patient.component';
 import { LaboratinComponent } from './pages/laboratin/laboratin.component';
 import { ListSoinsComponent } from './pages/list-soins/list-soins.component';
+import { PopupOrdonnanceComponent } from './pages/popup-ordonnance/popup-ordonnance.component';
 
 export const routes: Routes = [
-  { path: '', component: ConsultationComponent },
+  { path: '', component: PopupOrdonnanceComponent },
   {path: 'Doctor', component: InfoPatientComponent},
   {path: 'Consulatation', component:  ConsultationComponent},
   {path: 'Laboratin', component:  LaboratinComponent},
-  {path: 'Liste-soins', component:  ListSoinsComponent},
+  {path: 'ListeSoins', component:  ListSoinsComponent},
+  {path: 'PopupConsultation', component:  PopupOrdonnanceComponent},
 
 ];
 
