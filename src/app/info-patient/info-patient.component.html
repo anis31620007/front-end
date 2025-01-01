@@ -1,0 +1,41 @@
+ 
+  <!-- Info Card (Left Section) -->
+  <div class="info-card flex flex-col w-3/10 bg-white rounded-lg p-5 relative">
+    <div class="centered-header text-center mb-5">
+      <!-- Adjust image container to center it and limit its size -->
+      <div class="user-image-container w-20 h-20 mx-auto mb-4">
+        <img src="./Image 2.png" alt="" class="w-full h-full object-cover">
+      </div>
+      <h3 class="text-lg font-bold">{{patient.name}}</h3>
+      <p class="text-sm text-gray-600">Age: {{patient.age}}</p>
+    </div>
+
+  
+    <div class="info-list space-y-4">
+      <p class="text-gray-800 text-[12px]">Information</p>
+      <div class="flex items-center space-x-4 text-[12px]">
+        <img src="./nss.png" alt="" class="w-8 h-8 opacity-85">
+        <p>Num de sécurité sociale: <br> <strong class="text-black">{{ patient.NSS }}</strong></p>
+      </div>
+      <div class="flex items-center space-x-4 text-[12px]">
+        <img src="./Group 429.png" alt="" class="w-6 h-6 opacity-85">
+        <p>Date de naissance: <br> <strong class="text-black">{{patient.dateNaissance}}</strong></p>
+      </div>
+      <div class="flex items-center space-x-4 text-[12px]">
+        <img src="./tl.png" alt="" class="w-6 h-6">
+        <p>Numéro de téléphone: <br><strong class="text-black">{{ patient.NumTel }}</strong></p>
+      </div>
+      <div class="flex items-center space-x-4 text-[12px]">
+        <img src="./mail.png" alt="" class="w-6 h-6">
+        <p>Email: <br> <strong class="text-black">{{ patient.Email }}</strong></p>
+      </div>
+      <div class="flex items-center space-x-4 opacity-85 text-[12px]">
+        <img src="./prsnctc.png" alt="" class="w-6 h-6">
+        <p>Personne à contacter: <br> <strong class="text-black">{{ patient.Contact.Nom }} <br>{{ patient.Contact.Tel }}</strong></p>
+      </div>
+      <div class="flex items-center space-x-4 opacity-85 text-[12px]">
+        <img src="./mutuelle.png" alt="" class="w-6 h-6">
+        <p>Mutuelle: <br><strong class="text-black">{{ patient.Mutuelle }}</strong></p>
+      </div>
+    </div>
+  </div>
