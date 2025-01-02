@@ -1,0 +1,153 @@
+<div class="flex min-h-screen bg-gray-100">
+  <!-- Side Bar -->
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+/>
+  <div class="flex flex-col w-56 bg-white rounded-r-3xl overflow-hidden">
+    <div class="flex items-center justify-center h-20 border-b">
+      <h1 class="text-2xl font-bold text-[#78B2CA]">Logoipsum</h1>
+    </div>
+    <ul class="flex flex-col py-4">
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+          >
+            <i class="bx bx-home text-xl text-gray-500"></i>
+          </span>
+          <span class="text-sm font-medium">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            ><i class="bx bx-bell"></i
+          ></span>
+          <span class="text-sm font-medium">Notifications</span>
+          <span
+            class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-red-500"
+            >5</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            ><i class="bx bx-user"></i
+          ></span>
+          <span class="text-sm font-medium">Settings</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            ><i class="bx bx-log-out"></i
+          ></span>
+          <span class="text-sm font-medium">Logout</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-6">
+
+    <!-- Formulaire de création du dossier patient -->
+    
+    <!-- Informations personnelles -->
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+      <h2 class="text-xl font-bold mb-4">Informations personnelles</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-ibm-plex">Nom</label>
+          <input type="text" [(ngModel)]="dpi.Nom" placeholder="Entrez le nom du patient" class="w-full bg-[#F8FAFC] border-none rounded-lg p-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-ibm-plex">Prénom</label>
+          <input type="text" [(ngModel)]="dpi.Prenom" placeholder="Entrez le prénom du patient" class="w-full bg-[#F8FAFC] border-none rounded-lg p-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-ibm-plex">Numéro de sécurité sociale</label>
+          <input type="text" [(ngModel)]="dpi.NSS" placeholder="Entrez le NSS du patient" class="w-full bg-[#F8FAFC] border-none rounded-lg p-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-ibm-plex">Numéro de téléphone</label>
+          <input type="text" [(ngModel)]="dpi.Numero" placeholder="Entrez le numéro de téléphone du patient" class="w-full bg-[#F8FAFC] border-none rounded-lg p-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-ibm-plex">Date de naissance</label>
+        
+        <input type="date" [(ngModel)]="dpi.DateDeNaissonce" class="w-full bg-[#F8FAFC] border-none rounded-lg p-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-ibm-plex">Adresse</label>
+          <input type="text" [(ngModel)]="dpi.Adress" placeholder="Entrez l'adresse du patient" class="w-full bg-[#F8FAFC] border-none rounded-lg p-2">
+        </div>
+      </div>
+    </div>
+
+    <!-- Informations médicales -->
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+      <h2 class="text-xl font-bold mb-4">Informations médicales</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-ibm-plex">Mutuelle/Compagnie d’assurance</label>
+          <input type="text" [(ngModel)]="dpi.Mutuelle" placeholder="Entrez la mutuelle du patient" class="w-full bg-[#F8FAFC] border-none rounded-lg p-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-ibm-plex">E-mail du patient</label>
+          <input type="text" [(ngModel)]="dpi.email" placeholder="Entrez l'e-mail du patient" class="w-full bg-[#F8FAFC] border-none rounded-lg p-2">
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact d’urgence -->
+    <div class="bg-white rounded-lg shadow p-6 mb-6">
+      <h2 class="text-xl font-bold mb-4">Contact d’urgence</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-ibm-plex">Nom et prénom</label>
+          <input type="text" [(ngModel)]="dpi.ContactNom" placeholder="Entrez le nom et prénom du contact" class="w-full bg-[#F8FAFC] border-none rounded-lg p-2">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-ibm-plex">Relation au patient</label>
+          <select class="w-full border border-gray-300 rounded-lg p-2">
+            <option>Frère</option>
+            <option>Parent</option>
+            <option>Conjoint</option>
+            <option>Enfant</option>
+            <option>Ami</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 font-ibm-plex">Numéro de téléphone</label>
+          <input type="text" [(ngModel)]="dpi.ContactNumero" placeholder="Entrez le numéro du contact" class="w-full bg-[#F8FAFC] border-none rounded-lg p-2">
+        </div>
+      </div>
+    </div>
+
+    <!-- Boutons -->
+    <div class="flex justify-end gap-4">
+      <button class="px-4 py-2 bg-white text-black rounded-lg font-inter font-bold">Annuler</button>
+      <button id="save-button" class="px-4 py-2 bg-[#78B2CA] text-white rounded-lg font-inter font-bold" (click)="saveDpi()">Sauvegarder</button>
+    </div>
+  
+  </main>
+
+   

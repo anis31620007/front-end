@@ -1,0 +1,97 @@
+<div class="flex h-screen bg-gray-100">
+    <!-- Side Bar -->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
+    <div class="flex flex-col w-56 bg-white rounded-r-3xl overflow-hidden">
+      <div class="flex items-center justify-center h-20 border-b">
+        <h1 class="text-2xl font-bold text-[#78B2CA]">Logoipsum</h1>
+      </div>
+      <ul class="flex flex-col py-4">
+        <li>
+          <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+            <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400">
+              <i class="bx bx-home text-xl text-gray-500"></i>
+            </span>
+            <span class="text-sm font-medium">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+            <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400">
+              <i class="bx bx-bell"></i>
+            </span>
+            <span class="text-sm font-medium">Notifications</span>
+            <span class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-red-500">5</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+            <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400">
+              <i class="bx bx-user"></i>
+            </span>
+            <span class="text-sm font-medium">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+            <span class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400">
+              <i class="bx bx-log-out"></i>
+            </span>
+            <span class="text-sm font-medium">Logout</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Main Content -->
+    <main class="flex-1 p-6">
+      <!-- Table -->
+      <div class="bg-white shadow rounded-lg">
+        <div class="flex justify-between items-center px-4 py-3 border-b">
+          <h2 class="text-xl font-bold mb-4">Liste des demandes</h2>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full table-auto">
+            <thead class="bg-gray-100 border-b">
+              <tr>
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Nom</th>
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">NSS</th>
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Médecin traitant</th>
+                <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Traitement</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Example Row -->
+              <tr class="border-b">
+                <td class="px-6 py-4 text-sm text-gray-700 flex items-center space-x-2">
+                  <i class="bx bx-user-circle text-xl text-gray-500"></i>
+                  <span>Sraich Imene</span>
+                </td>
+                <td class="px-6 py-4 text-sm text-gray-500">XXXXXXXXXXX</td>
+                <td class="px-6 py-4 text-sm text-gray-500">Dr. Hamridech</td>
+                <td class="px-6 py-4 text-sm font-bold text-gray-500">
+                  <button class="px-4 py-2 bg-[rgb(191,246,201)] text-[#01921C] rounded-lg hover:bg-gray-200">
+                    Traiter
+                  </button>
+                </td>
+              </tr>
+              <!-- Repeat rows dynamically -->
+              <tr class="border-b">
+                <td class="px-6 py-4 text-sm text-gray-700 flex items-center space-x-2">
+                  <i class="bx bx-user-circle text-xl text-gray-500"></i>
+                  <span>Mesbah Nour el houda</span>
+                </td>
+                <td class="px-6 py-4 text-sm text-gray-500">YYYYYYYYYYY</td>
+                <td class="px-6 py-4 text-sm text-gray-500">Dr. lmlmlml</td>
+                <td class="px-6 py-4 text-sm font-bold text-gray-500">
+                  <button class="px-4 py-2 bg-[rgb(191,246,201)] text-[#01921C] rounded-lg hover:bg-gray-200">
+                    Traiter
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+  

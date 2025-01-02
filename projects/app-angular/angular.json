@@ -33,11 +33,12 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/public"
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
             ],
             "scripts": []
           },
@@ -95,15 +96,28 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }
     }
   },
   "cli": {
-    "analytics": "ea57e37e-dff1-4e80-b9e6-63b75e435b98"
+    "analytics": "ea57e37e-dff1-4e80-b9e6-63b75e435b98",
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }

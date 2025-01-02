@@ -1,7 +1,9 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
-    "./src/**/*.{html,ts}",
+    "./src/**/*.{html,ts}", // Adjust based on your project structure
+    "./node_modules/@fortawesome/fontawesome-free/**/*.js",
   ],
   theme: {
     extend: {},
