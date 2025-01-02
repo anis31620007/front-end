@@ -8,7 +8,7 @@ import { ListePatientComponent } from './pages/liste-patient/liste-patient.compo
 import { ListePatientDocteurComponent } from './pages/liste-patient-docteur/liste-patient-docteur.component';
 import { DemandesBilanComponent } from './pages/demandes-bilan/demandes-bilan.component';
 import { ListePatientInfermierComponent } from './pages/liste-patient-infermier/liste-patient-infermier.component';
-
+import { PopupSoinsComponent } from './pages/popup-soins/popup-soins.component';
 export const routes: Routes = [
   { path: '', component: LandingPageComponent},
   {path: 'patient', component: DossierpatientsComponent},
@@ -18,6 +18,7 @@ export const routes: Routes = [
 {path: 'listepatientdocteur', component:  ListePatientDocteurComponent},
 {path: 'listepatientinfermier', component:  ListePatientInfermierComponent},
 {path: 'demandesbilan', component:  DemandesBilanComponent},
+{ path: 'popupsoins', component: PopupSoinsComponent },
 
 ];
 
