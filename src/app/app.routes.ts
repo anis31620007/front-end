@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 //import { QRCodeModule } from 'angularx-qrcode';
@@ -6,18 +5,29 @@ import { LandingPageComponent } from './pages/landing-page/landing-page.componen
 import { DossierpatientsComponent } from './pages/dossierpatients/dossierpatients.component';
 import { FormsModule } from '@angular/forms';
 // Ajoutez FormsModule dans l'importation de vos modules Angular.
-import { QrPopupComponent } from './pages/qr-popup/qr-popup.component';  // Composant du popup
-import { AppComponent } from './app.component';  // Composant principal
+import { QrPopupComponent } from './pages/qr-popup/qr-popup.component'; // Composant du popup
+import { AppComponent } from './app.component'; // Composant principal
 import { InfermierComponent } from './pages/infermier/infermier.component';
-import{ GenerateQRCodeComponent}from './pages/generate-qrcode/generate-qrcode.component'
-
+import { GenerateQRCodeComponent } from './pages/generate-qrcode/generate-qrcode.component';
+import { ConsultationComponent } from './pages/consultation/consultation.component';
+import { LaboratinComponent } from './pages/laboratin/laboratin.component';
+import { ListSoinsComponent } from './pages/list-soins/list-soins.component';
+import { InfoPatientComponent } from './pages/info-patient/info-patient.component';
+import { PopupOrdonnanceComponent } from './pages/popup-ordonnance/popup-ordonnance.component';
 export const routes: Routes = [
- { path: '', component: LandingPageComponent},
-  {path: 'patient', component: DossierpatientsComponent},
-{path: 'landing', component:  LandingPageComponent},
-{path: 'infermier', component:  InfermierComponent},
-{ path: 'qr', component: GenerateQRCodeComponent},  // Route pour le composant principal
-//{ path: 'popup', component: QrPopupComponent },  // Route pour afficher le popup QR
+  { path: '', component: LandingPageComponent },
+  { path: 'patient', component: DossierpatientsComponent },
+  { path: 'landing', component: LandingPageComponent },
+  { path: 'infermier', component: InfermierComponent },
+  { path: 'qr', component: GenerateQRCodeComponent }, // Route pour le composant principal
+  { path: 'consultation', component: ConsultationComponent }, // Route pour le composant principal
+  { path: 'laboratin', component: LaboratinComponent }, // Route pour le composant principal
+  { path: 'soins', component: ListSoinsComponent }, // Route pour le composant principal
+  { path: 'info', component: InfoPatientComponent }, // Route pour le composant principal
+  { path: 'ordonnance', component: PopupOrdonnanceComponent }, // Route pour le composant principal
+
+
+  //{ path: 'popup', component: QrPopupComponent },  // Route pour afficher le popup QR
 ];
 
 @NgModule({

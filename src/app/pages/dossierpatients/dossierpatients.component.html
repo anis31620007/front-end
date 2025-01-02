@@ -121,71 +121,109 @@
     <div class="grid grid-cols-4 gap-6 mt-8">
       <!-- Patient Information -->
       <section class="col-span-1 bg-white rounded-lg shadow p-6">
-        <div class="flex flex-col items-center text-center">
-          <img
+        <div class="info-card bg-white rounded-lg p-5">
+          <div class="text-center mb-5">
+            <img
             src="../../../assets/images/Image 2.png"
-            alt="Patient photo"
-            class="w-24 h-24 rounded-full mb-4"
+            alt="Profile"
+            class="w-24 h-24 rounded-full mb-4 ml-14"
           />
-          <h2 class="font-semibold text-lg">Nom Prénom</h2>
-          <p class="text-sm text-gray-500">Age: XX</p>
+            <h3 class="text-lg font-bold">{{ patient.name }}</h3>
+            <p class="text-sm text-gray-600">Age: {{ patient.age }}</p>
+          </div>
+          <div class="space-y-4">
+            <p class="text-gray-800 text-sm">Information</p>
+            <div class="flex items-center space-x-4 text-sm">
+              <img
+                src="../../assets/icons/material-symbols-light--id-card-outline.png"
+                alt=""
+                class="w-8 h-8"
+              />
+              <p>
+                Num de sécurité sociale: <br />
+                <strong>{{ patient.NSS }}</strong>
+              </p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img
+                src="../../assets/icons/clarity--date-line.png"
+                alt=""
+                class="w-6 h-6"
+              />
+              <p>
+                Date de naissance: <br />
+                <strong>{{ patient.dateNaissance }}</strong>
+              </p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img
+                src="../../assets/icons/mdi-light--phone.png"
+                alt=""
+                class="w-6 h-6"
+              />
+              <p>
+                Numéro de téléphone: <br /><strong>{{ patient.NumTel }}</strong>
+              </p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img
+                src="../../assets/icons/si--mail-line.png"
+                alt=""
+                class="w-6 h-6"
+              />
+              <p>
+                Email: <br />
+                <strong>{{ patient.Email }}</strong>
+              </p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img
+                src="../../assets/icons/hugeicons--contact-02.png"
+                alt=""
+                class="w-6 h-6"
+              />
+              <p>
+                Personne à contacter: <br />
+                <strong
+                  >{{ patient.Contact.Nom }} <br />{{
+                    patient.Contact.Tel
+                  }}</strong
+                >
+              </p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img
+                src="../../assets/icons/streamline--insurance-hand.png"
+                alt=""
+                class="w-6 h-6"
+              />
+              <p>
+                Mutuelle: <br /><strong>{{ patient.Mutuelle }}</strong>
+              </p>
+            </div>
+          </div>
         </div>
-        <ul class="mt-6 text-sm text-gray-700 space-y-4">
-          <li><strong>Num de sécurité sociale:</strong> 31620007</li>
-          <li><strong>Date de naissance:</strong> 10/06/2002</li>
-          <li><strong>Numéro de téléphone:</strong> 21 21 12 13 12</li>
-          <li><strong>Email:</strong> li_sraichesi.dz</li>
-          <li><strong>Adresse:</strong> 192 rue de je ne sais quoi Alger</li>
-          <li><strong>Personne à contacter:</strong> Sraich imene</li>
-          <li><strong>Mutuelle:</strong> info sur la compagnie</li>
-        </ul>
       </section>
 
       <!-- Les Antécédents -->
       <section class="col-span-1 bg-white rounded-lg shadow p-6">
         <h2 class="font-bold text-lg mb-4">Les antécédents</h2>
         <ul class="space-y-4 text-sm text-gray-700">
-          <li class="flex items-center space-x-4">
+          <li
+            *ngFor="let item of antecedents"
+            class="flex items-center space-x-4"
+          >
             <div
-              class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center"
+              class="w-10 h-10 rounded-lg flex items-center justify-center"
+              [ngClass]="item.backgroundColor"
             >
-              <img src="../../../assets/images/maladie.png" />
-            </div>
-            <div><strong>Maladies chroniques:</strong> Description...</div>
-          </li>
-          <li class="flex items-center space-x-4">
-            <div
-              class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center"
-            >
-              <i class="bx bx-droplet text-xl text-red-500"></i>
+              <!-- Affiche une image ou une icône en fonction de la source -->
+              <img *ngIf="item.isImage" [src]="item.icon" class="w-6 h-6" />
+              <i *ngIf="!item.isImage" [class]="item.icon"></i>
             </div>
             <div>
-              <strong>Urgences liées au diabète:</strong> Description...
+              <strong>{{ item.title }}:</strong> {{ item.description }}
             </div>
-          </li>
-          <li class="flex items-center space-x-4">
-            <div
-              class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center"
-            >
-              <img src="../../../assets/images/chir.png" />
-            </div>
-            <div><strong>Chirurgie:</strong> Description...</div>
-          </li>
-          <li class="flex items-center space-x-4">
-            <div
-              class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center"
-            >
-              <i class="bx bx-group text-xl text-yellow-500"></i>
-            </div>
-            <div><strong>Maladies familiales:</strong> Description...</div>
-          </li>
-          <li class="flex items-center space-x-4">
-            <div
-              class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center"
-            >
-              <i class="bx bx-band-aid text-xl text-purple-500"></i>
-            </div>
-            <div><strong>Complications associées:</strong> Description...</div>
           </li>
         </ul>
       </section>
@@ -210,8 +248,9 @@
                   <span class="text-gray-500 text-xs">01/10/2024</span>
                 </div>
               </button>
-              <app-radiology-popup [isVisible]="issPopupVisible"></app-radiology-popup>
-
+              <app-radiology-popup
+                [isVisible]="issPopupVisible"
+              ></app-radiology-popup>
             </div>
           </li>
           <li
@@ -224,9 +263,16 @@
                 <i class="bx bx-file text-blue-500 text-lg"></i>
               </div>
               <div>
-                <span class="font-medium">Bilan Laboratin</span>
-                <br />
-                <span class="text-gray-500 text-xs">24/10/2024</span>
+                <Button (click)="togglePopup()">
+                  <span class="font-medium">Bilan Laboratin</span>
+                  <br />
+                  <span class="text-gray-500 text-xs">24/10/2024</span>
+                </Button>
+                <app-bilan-popup
+                  [bilanData]="bilanData"
+                  [date]="date"
+                  [isOpen]="sshowPopup"
+                ></app-bilan-popup>
               </div>
             </div>
           </li>

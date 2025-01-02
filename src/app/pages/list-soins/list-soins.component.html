@@ -1,0 +1,142 @@
+<div class="flex flex-row">
+    <!-- Sidebar -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+    />
+    <div class="flex flex-col w-56 bg-white rounded-r-3xl overflow-hidden ">
+      <div class="flex items-center justify-center h-20 border-b">
+        <h1 class="text-2xl font-bold text-indigo-500">Logoipsum</h1>
+      </div>
+      <ul class="flex flex-col py-4">
+        <li>
+            <a
+              href="#"
+              class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+            >
+              <span
+                class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+              >
+              <i class="bx bx-file text-xl text-gray-400"></i>
+            </span>
+            <span class="text-sm font-medium">Liste de DPI </span>
+            </a>
+          </li>
+        <li>
+          <a
+            href="#"
+            class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+          >
+            <span
+              class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+              ><i class="bx bx-bell"></i></span
+            >
+            <span class="text-sm font-medium">Notifications</span>
+            <span
+              class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-red-500"
+              >5</span
+            >
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+          >
+            <span
+              class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+              ><i class="bx bx-user"></i></span
+            >
+            <span class="text-sm font-medium">Settings</span>
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="flex-1 p-5  bg-[#EAEDF4] ">
+      <h1 class="text-3xl font-bold mb-2">Soins</h1>
+      <div class="flex flex-col md:flex-row gap-5">
+ 
+        <!-- Left Section: Info Patient: where we are gonna inject les info ta3 patient, i used une variable aptient que j'ai preremplie f ts, elle est de type userInterface -->
+         <div class="flex flex-col w-3/12 min-w-[200px] gap-4">
+        <div class="info-card  bg-white rounded-lg p-5  ">
+          <div class="text-center mb-5">
+            <div class="w-20 h-20 mx-auto mb-4">
+              <img src="../../assets/icons/teenyicons--user-square-outline.png" alt="" class="w-full h-full object-cover">
+            </div>
+            <h3 class="text-lg font-bold">{{patient.name}}</h3>
+            <p class="text-sm text-gray-600">Age: {{patient.age}}</p>
+          </div>
+          <div class="space-y-4 ">
+            <p class="text-gray-800 text-sm">Information</p>
+            <div class="flex items-center space-x-4 text-sm">
+              <img src="../../assets/icons/material-symbols-light--id-card-outline.png" alt="" class="w-8 h-8">
+              <p>Num de sécurité sociale: <br> <strong>{{ patient.NSS }}</strong></p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img src="../../assets/icons/clarity--date-line.png" alt="" class="w-6 h-6">
+              <p>Date de naissance: <br> <strong>{{patient.dateNaissance}}</strong></p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img src="../../assets/icons/mdi-light--phone.png" alt="" class="w-6 h-6">
+              <p>Numéro de téléphone: <br><strong>{{ patient.NumTel }}</strong></p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img src="../../assets/icons/si--mail-line.png" alt="" class="w-6 h-6">
+              <p>Email: <br> <strong>{{ patient.Email }}</strong></p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img src="../../assets/icons/hugeicons--contact-02.png" alt="" class="w-6 h-6">
+              <p>Personne à contacter: <br> <strong>{{ patient.Contact.Nom }} <br>{{ patient.Contact.Tel }}</strong></p>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+              <img src="../../assets/icons/streamline--insurance-hand.png" alt="" class="w-6 h-6">
+              <p>Mutuelle: <br><strong>{{ patient.Mutuelle }}</strong></p>
+            </div>
+          </div>
+        </div>
+    </div>
+
+        
+        <!-- Right Section -->
+    <!-- fhad la partie we need to add a rederection le pop up soins iif we click on it or the page ta3 l'infermier if we click on the button add  -->
+    <div class="consultation-list bg-white rounded-lg p-5 flex flex-col flex-1">
+        <h2 class="text-[22px] font-bold mb-3">Liste des soins</h2>
+        <ul id="consultation-list" class="list-none p-0 mb-auto">
+          <li *ngFor="let soins of Soins; let i = index" class="flex items-center mb-2 p-2 bg-gray-100 rounded-lg">
+            <img src="../../assets/icons/raphael--page.png" alt="" class="h-[1.5em] mr-2.5">
+            <div>
+              <!-- this input is just to name the consultation, we can cahnge it w ndirouha par number if you want,save get triggered when we click on enter or we click ouside the input field,-->
+              <input 
+                *ngIf="soins.editing" 
+                [(ngModel)]="soins.name" 
+                type="text" 
+                placeholder="Enter consultation name"
+                (keydown.enter)="saveSoins(i)"
+                (blur)="saveSoins(i)"
+                class="bg-none border border-black rounded px-2 py-1"
+              />
+              <strong *ngIf="!soins.editing" class="text-sm">{{ soins.name }}</strong><!-- it edits just the name ta3 le soins -->
+              <p class="text-xs text-black">{{ soins.date }}</p>
+            </div>
+            <div class="ml-auto mr-5 self-center flex space-x-2">
+              <button (click)="editSoins(i)" class="border-none cursor-pointer">
+                <img src="../../assets/icons/lucide--edit.png" alt="edit" class="h-[16px]">
+              </button>
+              <button (click)="deleteSoins(i)" class="border-none cursor-pointer">
+                <img src="../../assets/icons/material-symbols--delete-outline.png" alt="delete" class="h-[18px]">
+              </button>
+            </div>
+          </li>
+        </ul>
+        <div class="flex justify-end mt-auto">
+          <button (click)="addSoins()" class="ajouterButton bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-[90px] text-xs" [disabled]="!isNameValid">
+            Ajouter
+          </button>
+        </div>
+      </div>
+    </div>
+ </div>
+</div>

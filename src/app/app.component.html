@@ -40,18 +40,4 @@
 <app-radiology-popup [isVisible]="isPopupVisible"></app-radiology-popup>
 
 -->
-<p>cc</p>
-<div class="p-8">
-  <button
-    class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
-    (click)="togglePopup()"
-  >
-    Afficher le Bilan
-  </button>
-
-  <app-bilan-popup
-    [bilanData]="bilanData"
-    [date]="date"
-    [isOpen]="showPopup"
-  ></app-bilan-popup>
-</div>
+<router-outlet></router-outlet>
