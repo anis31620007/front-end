@@ -1,2 +1,43 @@
-<router-outlet></router-outlet>
+<!--
+<router-outlet>
 
+  <nav>
+    <a class="button" routerLink="/patient">Crisis Center</a> |
+    <a class="button" routerLink="/">Heroes</a>
+  </nav>
+
+</router-outlet>
+
+-->
+<!--
+<p>cc</p>
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+  <h1 class="text-2xl font-bold mb-4">Générer un QR Code</h1>
+  <input
+    type="number"
+    class="border p-2 rounded mb-4"
+    [(ngModel)]="qrValue"
+    (input)="generateQRCode()"
+    placeholder="Entrez un nombre"
+  />
+  <canvas id="qrcodeCanvas" class="p-4 bg-white rounded shadow"></canvas>
+</div>
+
+-->
+<!--
+<p>cc</p>
+<div class="flex items-center justify-center min-h-screen">
+  Bouton pour afficher le popup 
+  <button
+    (click)="showPopup()"
+    class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
+  >
+    Afficher le popup
+  </button>
+</div>
+
+>
+<app-radiology-popup [isVisible]="isPopupVisible"></app-radiology-popup>
+
+-->
+<router-outlet></router-outlet>

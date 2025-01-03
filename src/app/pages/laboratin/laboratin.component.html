@@ -1,0 +1,214 @@
+<div class="flex flex-row">
+  <!-- Sidebar -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+  />
+  <div class="flex flex-col w-56 bg-white rounded-r-3xl overflow-hidden">
+    <div class="flex items-center justify-center h-20 border-b">
+      <h1 class="text-2xl font-bold text-indigo-500">Logoipsum</h1>
+    </div>
+    <ul class="flex flex-col py-4">
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+          >
+            <i class="bx bx-file text-xl text-gray-400"></i>
+          </span>
+          <span class="text-sm font-medium">Liste de DPI </span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            ><i class="bx bx-bell"></i
+          ></span>
+          <span class="text-sm font-medium">Notifications</span>
+          <span
+            class="ml-auto mr-6 text-sm bg-red-100 rounded-full px-3 py-px text-red-500"
+            >5</span
+          >
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+          class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800"
+        >
+          <span
+            class="inline-flex items-center justify-center h-12 w-12 text-lg text-gray-400"
+            ><i class="bx bx-user"></i
+          ></span>
+          <span class="text-sm font-medium">Settings</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="flex flex-col flex-1 md:flex-row gap-5 p-5 bg-[#EAEDF4]">
+    <!-- Left Section: Info Patient -->
+    <div class="flex flex-col w-full md:w-3/12 gap-4">
+      <div class="info-card bg-white rounded-lg p-5">
+        <div class="text-center mb-5">
+          <h3 class="text-lg font-bold">{{ patient.name }}</h3>
+          <p class="text-sm text-gray-600">Age: {{ patient.age }}</p>
+        </div>
+        <div class="space-y-4">
+          <p class="text-gray-800 text-sm">Information</p>
+          <div class="flex items-center space-x-4 text-sm">
+            <img
+              src="../../assets/icons/material-symbols-light--id-card-outline.png"
+              alt=""
+              class="w-8 h-8"
+            />
+            <p>
+              Num de sécurité sociale: <br />
+              <strong>{{ patient.NSS }}</strong>
+            </p>
+          </div>
+          <div class="flex items-center space-x-4 text-sm">
+            <img
+              src="../../assets/icons/clarity--date-line.png"
+              alt=""
+              class="w-6 h-6"
+            />
+            <p>
+              Date de naissance: <br />
+              <strong>{{ patient.dateNaissance }}</strong>
+            </p>
+          </div>
+          <div class="flex items-center space-x-4 text-sm">
+            <img
+              src="../../assets/icons/mdi-light--phone.png"
+              alt=""
+              class="w-6 h-6"
+            />
+            <p>
+              Numéro de téléphone: <br /><strong>{{ patient.NumTel }}</strong>
+            </p>
+          </div>
+          <div class="flex items-center space-x-4 text-sm">
+            <img
+              src="../../assets/icons/si--mail-line.png"
+              alt=""
+              class="w-6 h-6"
+            />
+            <p>
+              Email: <br />
+              <strong>{{ patient.Email }}</strong>
+            </p>
+          </div>
+          <div class="flex items-center space-x-4 text-sm">
+            <img
+              src="../../assets/icons/hugeicons--contact-02.png"
+              alt=""
+              class="w-6 h-6"
+            />
+            <p>
+              Personne à contacter: <br />
+              <strong
+                >{{ patient.Contact.Nom }} <br />{{
+                  patient.Contact.Tel
+                }}</strong
+              >
+            </p>
+          </div>
+          <div class="flex items-center space-x-4 text-sm">
+            <img
+              src="../../assets/icons/streamline--insurance-hand.png"
+              alt=""
+              class="w-6 h-6"
+            />
+            <p>
+              Mutuelle: <br /><strong>{{ patient.Mutuelle }}</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg p-5">
+        <h2 class="text-xl font-bold mb-3">Bilan</h2>
+        <ul
+          class="list-none p-0 mb-auto overflow-auto text-[12px] max-h-[200px]"
+        >
+          <li
+            *ngFor="let bilan of Bilan; let i = index"
+            class="flex items-center mb-2 p-2 bg-gray-100 rounded-lg custom-scrollbar"
+          >
+            <img
+              src="../../assets/icons/raphael--page.png"
+              alt=""
+              class="h-6 mr-2"
+            />
+            <div>
+              <span class="text-[12px] font-medium">{{ bilan.name }}</span>
+              <p class="text-[10px] font-normal">{{ bilan.date }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="flex flex-col w-full md:w-9/12 gap-5">
+      <div class="mx-auto w-full bg-white rounded-lg p-5 flex-1">
+        <h2 class="text-xl font-bold mb-3">Resultats</h2>
+        <table class="min-w-full table-auto border-collapse">
+          <thead>
+            <tr>
+              <th class="px-4 py-2 border-b">Parametre Mesure</th>
+              <th class="px-4 py-2 border-b">Resultats</th>
+              <th class="px-4 py-2 border-b">Valeurs Usuelles</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let row of tableData; let i = index">
+              <td class="px-4 py-2 border-b">
+                <span>{{ row.parametreMesure }}</span>
+              </td>
+              <td class="px-4 py-2 border-b">
+                <div class="flex flex-row">
+                  <input
+                    [(ngModel)]="row.resultats"
+                    (blur)="saveRow(i)"
+                    (keydown.enter)="saveRow(i)"
+                    type="number"
+                    class="w-full px-2 py-1 border rounded-md"
+                  />
+                  <span>{{ row.mesure }}</span>
+                </div>
+              </td>
+              <td class="px-4 py-2 border-b">
+                <span>{{ row.valeursUsuelles }}{{ row.mesure }}</span>
+                <!-- <select [(ngModel)]="mesure" class="border border-gray-300 rounded-md p-2 text-sm">
+                    <option *ngFor="let mesure of tableData" [value]="mesure.mesure">{{ mesure.mesure }}</option>
+                  </select> -->
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="flex flex-row justify-end gap-2 mt-3">
+          <!-- <button (click)="addRow()" class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-auto text-xs flex items-center justify-center">Ajouter</button> -->
+          <button
+            (click)="createChart()"
+            class="bg-[#78B2CA] text-white py-2 px-4 rounded-lg h-[35px] w-auto text-xs flex items-center justify-center"
+          >
+            Generer Graphe
+          </button>
+        </div>
+      </div>
+      <div class="flex items-center justify-center p-5 h-auto w-full">
+        <canvas #chartCanvas class="w-full h-full"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

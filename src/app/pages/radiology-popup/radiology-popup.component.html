@@ -1,0 +1,24 @@
+<div *ngIf="isVisible" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full relative">
+      <!-- Bouton de fermeture -->
+      <button class="absolute top-2 right-2 text-gray-600" (click)="closePopup()">✕</button>
+  
+      <!-- Titre -->
+      <h2 class="text-lg font-bold text-center mb-4">Bilan de radiologie</h2>
+      <p class="text-sm text-gray-500 mb-4">Date : ..../..../......</p>
+  
+      <!-- Image -->
+      <div class="mb-4">
+        <img src="../../../assets/images/radio 1.png" alt="Radiology Image" class="w-full h-auto rounded-md" />
+      </div>
+  
+      <!-- Résultat -->
+      <div>
+        <h3 class="font-semibold">Résultat :</h3>
+        <p class="text-gray-700 mt-2">
+          Voici un résumé statique du résultat de l'examen de radiologie.
+        </p>
+      </div>
+    </div>
+  </div>
+  
