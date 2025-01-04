@@ -24,4 +24,9 @@ export class DpiService {
     return this.http.post(this.apiUrl, dpi, { headers });
   }
 
+  returnRole(): string {
+    const role = localStorage.getItem('Role');
+    return role ? role : '';
+  }
+
 }

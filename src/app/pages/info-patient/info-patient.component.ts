@@ -2,10 +2,14 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component, computed, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { userInterface } from '../info-patient-interface';
+import { userInterface, Consultation, PatientInfo} from '../info-patient-interface';
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { InfoPatientServices } from './info-patient_services';
+import { OnInit } from '@angular/core';
+import { TransferService } from '../../transfer.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ListService } from '../../list.service';
 
 
 @Component({
@@ -16,44 +20,89 @@ import { InfoPatientServices } from './info-patient_services';
   templateUrl: './info-patient.component.html',
   styleUrl: './info-patient.component.css'
 })
-export class InfoPatientComponent {
-  // isSidebarCollapsed=input.required<boolean>();
-  // screenWidth=input.required<number>();
-  // sizeClass = computed(() => {
-  //   const isLeftSidebarCollapsed = this.isSidebarCollapsed();
-  //   if (isLeftSidebarCollapsed) {
-  //     return '';
-  //   }
-  //   return this.screenWidth() > 768 ? 'body-trimmed' : 'body-md-screen';
-  // });
+export class InfoPatientComponent implements OnInit {
+
+  constructor(private route: ActivatedRoute, private router: Router, private transferService: TransferService, private listService: ListService) {}
+  info: any[] = [];
+  testzest: JSON= {} as JSON;
+  nss: string = '';
+  
   patient:userInterface =     {
-    name:'sraich imene',
+    // name:this.info[0].nom + ' ' + this.info[0].prenom,
+    name: '',
     age:20,
-    NSS: 12345678901,
+    NSS: 0,
     dateNaissance: '10/20/2004',
-    NumTel: 658080305,
-    Email: 'li_sraich@esi.dz',
+    NumTel: 0,
+    Adresse: '',
     Contact: {
-      Nom: "Imene",
-      Tel: 932810938
+      Nom: "",
+      Tel: 0
     },
-    Mutuelle: 'info sur la mutuelle'
+    Mutuelle: ''
   }
- // ce code est to get les info a partir du link obtenue de django , somthing is not working in it and i don't know what
-  // constructor(private http:HttpClient, private patientService:InfoPatientServices){}
-  // ngOnInit():void{
-  //  this.patientService.getPatient().subscribe((patient: userInterface) => {
-  //   console.log('afficher les info patient');
-  //   this.patient=patient; 
-  //  })
-  // }
- 
-    // Array to hold consultations
+
   consultations = [
     { name: 'Consultation1', date: '24/10/2024', editing: false }
   ];
+  
+
+
+  ngOnInit(): void {
+      this.info = this.transferService.getDpiDetails();
+      console.log("Test info received from service:", this.info);
+      this.route.queryParams.subscribe(params => {
+        this.nss = params['nss']; 
+      });
+      if (this.nss) {
+        this.fetchDPI(this.nss);
+        console.log('NSS:', this.nss);
+      }
+  }
+
+  fetchDPI(nss: string): void {
+    this.listService.voirDPI(nss).subscribe(
+      (data) => {
+        console.log('DPI Data:', data);
+        this.patient = {
+          name: data.dpi.Nom,
+          age: 20,
+          NSS: data.dpi.NSS,
+          dateNaissance: data.dpi.DateDeNaissonce,
+          NumTel: data.dpi.Numero,
+          Adresse: data.dpi.Adress,
+          Contact: {
+            Nom: data.dpi.ContactNom,
+            Tel: data.dpi.ContactNumero
+          },
+          Mutuelle: data.dpi.Mutuelle,
+        };
+
+        this.consultations = data.consultations.map((consultation: any) => ({
+          name: `Consultation ${consultation.IdConsultation}`,
+          date: new Date(consultation.created_at).toLocaleDateString(), // Format date
+          editing: false, // Initially set editing to false
+          resume: consultation.resume // Include the resume or any additional data if needed
+        }));
+
+        console.log('Patient:', this.patient);
+        console.log('Consultations:', this.consultations);	
+
+        
+      },
+      (error) => {
+        console.error('Error fetching DPI:', error);
+        alert('Failed to fetch DPI. Please try again.');
+      }
+    );
+    }
+    
+
+    // Array to hold consultations
+  
   isNameValid= true; 
   // Add a new consultation
+
   addConsultation(): void {
     const today = new Date();
     const formattedDate = today.toLocaleDateString(); // Get today's date

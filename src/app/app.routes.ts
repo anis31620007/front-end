@@ -30,12 +30,12 @@ export const routes: Routes = [
   {path: 'listepatientinfermier', component:  ListePatientInfermierComponent},
   {path: 'demandesbilan', component:  DemandesBilanComponent},
   { path: 'infermier', component: InfermierComponent },
-  { path: 'qr', component: GenerateQRCodeComponent }, // Route pour le composant principal
-  { path: 'consultation', component: ConsultationComponent }, // Route pour le composant principal
-  { path: 'laboratin', component: LaboratinComponent }, // Route pour le composant principal
-  { path: 'soins', component: ListSoinsComponent }, // Route pour le composant principal
-  { path: 'info', component: InfoPatientComponent }, // Route pour le composant principal
-  { path: 'ordonnance', component: PopupOrdonnanceComponent }, // Route pour le composant principal
+  { path: 'qr', component: GenerateQRCodeComponent }, 
+  { path: 'consultation', component: ConsultationComponent }, 
+  { path: 'laboratin', component: LaboratinComponent }, 
+  { path: 'soins', component: ListSoinsComponent }, 
+  { path: 'info', component: InfoPatientComponent }, 
+  { path: 'ordonnance', component: PopupOrdonnanceComponent }, 
 //{ path: 'popup', component: QrPopupComponent },  // Route pour afficher le popup QR
 
 

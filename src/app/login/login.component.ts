@@ -77,7 +77,8 @@ export class LoginComponent {
         if (response && response.access) {
           localStorage.setItem('Access', response.access);
           console.log('Access:', localStorage.getItem('Access'));
-          localStorage.setItem('Refresh', response.refresh); 
+          localStorage.setItem('Refresh', response.refresh);
+          localStorage.setItem('Role', response.user.role); 
           this.errorMessage='';
                     // Redirect based on role
                     const userRole = response.user.role;
@@ -87,12 +88,17 @@ export class LoginComponent {
                         queryParams: { nom: response.user.nom, prenom: response.user.prenom }
                       });
                     } else if (userRole === 'medecin') {
-                      this.router.navigate(['/medecin-dashboard']);
-                    } else if (userRole === 'infermier') {
-                      this.router.navigate(['/infermier-dashboard']);
-                    } else {
-                      // Default or unknown role
-                      this.router.navigate(['/default-dashboard']);
+                      this.router.navigate(['/listepatientdocteur'], {
+                        queryParams: { nom: response.user.nom, prenom: response.user.prenom }
+                      });
+                    } else if (userRole === 'infirmier') {
+                      this.router.navigate(['/listepatientinfermier']);
+                    } else if (userRole === 'laborantin') {
+                      this.router.navigate(['/demandesbilan']);
+                    } else if (userRole === 'radiologue') {
+                      this.router.navigate(['/demandesbilan']);
+                    } else if (userRole === 'patient') {
+                      this.router.navigate(['/patient']);
                     }
           if (this.rememberMe) {
             localStorage.setItem('email', this.email);
