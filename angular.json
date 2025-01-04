@@ -3,7 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+<<<<<<< HEAD
     "app-rad": {
+=======
+    "popup-project": {
+>>>>>>> 6344da3 (initial commit)
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +27,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+<<<<<<< HEAD
             "outputPath": "dist/app-rad",
+=======
+            "outputPath": "dist/popup-project",
+>>>>>>> 6344da3 (initial commit)
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -69,10 +77,17 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
+<<<<<<< HEAD
               "buildTarget": "app-rad:build:production"
             },
             "development": {
               "buildTarget": "app-rad:build:development"
+=======
+              "buildTarget": "popup-project:build:production"
+            },
+            "development": {
+              "buildTarget": "popup-project:build:development"
+>>>>>>> 6344da3 (initial commit)
             }
           },
           "defaultConfiguration": "development"
@@ -102,8 +117,11 @@
         }
       }
     }
+<<<<<<< HEAD
   },
   "cli": {
     "analytics": "ea49ab5b-7400-4abe-a8ba-99453950a94c"
+=======
+>>>>>>> 6344da3 (initial commit)
   }
 }

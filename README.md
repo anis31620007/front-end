@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # AppRad
+=======
+# PopupProject
+>>>>>>> 6344da3 (initial commit)
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.5.
 
