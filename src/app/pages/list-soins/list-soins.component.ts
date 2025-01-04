@@ -17,7 +17,7 @@ export class ListSoinsComponent {
     NSS: 12345678901,
     dateNaissance: '10/20/2004',
     NumTel: 658080305,
-    Email: 'li_sraich@esi.dz',
+    Adresse: 'li_sraich@esi.dz',
     Contact: {
       Nom: 'Imene',
       Tel: 932810938,

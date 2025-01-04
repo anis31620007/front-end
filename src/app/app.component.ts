@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -6,18 +7,15 @@ import { BilanPopupComponent } from './pages/bilan-popup/bilan-popup.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [
-    RouterOutlet,
-    FormsModule,
+  imports: [RouterOutlet,     FormsModule,
     RadiologyPopupComponent /* BloodTestPopupComponent*/,
-    BilanPopupComponent
-  ],
+    BilanPopupComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  standalone: true,
+  styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'projet-igl';
+  title = 'projet-angular';
   showPopup = false;
 
   bilanData = [
@@ -30,4 +28,5 @@ export class AppComponent {
   togglePopup() {
     this.showPopup = !this.showPopup;
   }
+
 }
