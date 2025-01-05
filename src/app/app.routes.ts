@@ -10,7 +10,7 @@ import { ListSoinsComponent } from './pages/list-soins/list-soins.component';
 import { PopupOrdonnanceComponent } from './pages/popup-ordonnance/popup-ordonnance.component';
 
 export const routes: Routes = [
-  { path: '', component: PopupOrdonnanceComponent },
+  { path: '', component: InfoPatientComponent },
   {path: 'Doctor', component: InfoPatientComponent},
   {path: 'Consulatation', component:  ConsultationComponent},
   {path: 'Laboratin', component:  LaboratinComponent},

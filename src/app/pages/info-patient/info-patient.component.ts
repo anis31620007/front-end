@@ -99,17 +99,22 @@ export class InfoPatientComponent {
   // Medical history items
   medicalHistory: { label: string; icon: string; details: string }[] = [];
 
-  // Add new medical history item
   addMedicalItem() {
     const selected = this.types.find(type => type.value === this.selectedType);
-    if (selected) {
+  
+    // Check if the type is already in the medicalHistory array
+    if (selected && !this.medicalHistory.some(item => item.label === selected.label)) {
       this.medicalHistory.push({
         label: selected.label,
         icon: selected.icon,
         details: ''
       });
+    } else {
+      // Optionally, display an alert or message to the user
+      alert('Ce type a déjà été ajouté.');
     }
   }
+  
   deleteMedicalItem(index: number) {
     // Remove the item at the specified index from the medicalHistory array
     this.medicalHistory.splice(index, 1);
