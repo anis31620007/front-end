@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import QRCode from 'qrcode';
 import { ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -8,11 +8,15 @@ import { CommonModule } from '@angular/common';
   selector: 'app-generate-qrcode',
   templateUrl: './generate-qrcode.component.html',
   styleUrls: ['./generate-qrcode.component.css'],
+  standalone: true,
   imports: [CommonModule], // Ajoutez cette ligne pour résoudre le problème de *ngIf
 })
 export class GenerateQRCodeComponent {
   qrCodeDataUrl: string | null = null;
   isPopupVisible: boolean = false;
+
+  // @Output() closePopup = new EventEmitter<void>();
+  @Output() popupClosed: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private cdr: ChangeDetectorRef) {}
 
@@ -30,8 +34,12 @@ export class GenerateQRCodeComponent {
   }
 
   closePopup() {
-    console.log('Popup fermé');
-    this.isPopupVisible = false;
-    this.cdr.detectChanges(); // Force Angular à détecter les changements
+    console.log('Popup closed');
+    this.isPopupVisible = false; // Hide the popup
+    this.popupClosed.emit(); // Emit an event to notify the parent
+    this.cdr.detectChanges(); // Ensure Angular detects changes
   }
+
+
+
 }
