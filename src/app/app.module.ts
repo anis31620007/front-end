@@ -9,12 +9,15 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { CreerDpiComponent } from './pages/creer-dpi/creer-dpi.component';
 import { CommonModule } from '@angular/common';
+import { GenerateQRCodeComponent } from './pages/generate-qrcode/generate-qrcode.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CreerDpiComponent
+    CreerDpiComponent,
+    GenerateQRCodeComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +30,7 @@ import { CommonModule } from '@angular/common';
   // providers: [],
 
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

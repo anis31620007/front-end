@@ -98,7 +98,7 @@ export class LoginComponent {
                     } else if (userRole === 'radiologue') {
                       this.router.navigate(['/demandesbilan']);
                     } else if (userRole === 'patient') {
-                      this.router.navigate(['/patient']);
+                      this.router.navigate(['/patient'], {queryParams: {id: response.user.id}});
                     }
           if (this.rememberMe) {
             localStorage.setItem('email', this.email);
